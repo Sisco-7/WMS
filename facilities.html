@@ -1,0 +1,1479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Explore the state-of-the-art facilities at Winsome Model Schools in Ifako, Lagos, Nigeria, including smart classrooms, labs, and sports complexes.">
+  <meta name="theme-color" content="#003087">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="assets/icons/icon-192x192.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <title>Facilities - Winsome Model Schools</title>
+  <style>
+    /* Reset and Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #f9f9f9;
+      color: #333;
+      line-height: 1.8;
+      overflow-x: hidden;
+      transition: background 0.5s ease, color 0.5s ease;
+    }
+
+    body.dark-mode {
+      background: #1c2526;
+      color: #e0e0e0;
+    }
+
+    /* Dark Mode Toggle */
+    .dark-mode-toggle {
+      position: fixed;
+      top: 15px;
+      right: 15px;
+      font-size: clamp(1rem, 1.5vw, 1.2rem);
+      cursor: pointer;
+      color: #fff;
+      background: #003087;
+      padding: clamp(5px, 0.8vw, 7px);
+      border-radius: 8px;
+      z-index: 1001;
+      transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .dark-mode-toggle:hover {
+      transform: scale(1.05);
+      background: #0056b3;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    body.dark-mode .dark-mode-toggle {
+      background: #ffd700;
+      color: #003087;
+      box-shadow: 0 2px 8px rgba(255, 215, 0, 0.3);
+    }
+
+    body.dark-mode .dark-mode-toggle:hover {
+      background: #ffeb3b;
+      box-shadow: 0 4px 12px rgba(255, 215, 0, 0.4);
+    }
+
+    /* Utility Classes */
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 clamp(15px, 2vw, 20px);
+      width: 100%;
+    }
+
+    .btn {
+      display: inline-block;
+      background: linear-gradient(135deg, #003087, #0056b3);
+      color: white;
+      padding: clamp(10px, 2vw, 14px) clamp(20px, 3vw, 30px);
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: clamp(0.875rem, 2vw, 1.125rem);
+      text-decoration: none;
+      transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 5px 15px rgba(0, 48, 135, 0.3);
+    }
+
+    .btn:hover {
+      transform: translateY(-5px) scale(1.05);
+      background: linear-gradient(135deg, #0056b3, #007bff);
+      box-shadow: 0 10px 25px rgba(0, 48, 135, 0.6);
+    }
+
+    body.dark-mode .btn {
+      background: linear-gradient(135deg, #ffd700, #ffeb3b);
+      color: #003087;
+      box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+    }
+
+    body.dark-mode .btn:hover {
+      background: linear-gradient(135deg, #ffeb3b, #fff59d);
+      box-shadow: 0 10px 25px rgba(255, 215, 0, 0.7);
+    }
+
+    .section-title {
+      color: #003087;
+      font-size: clamp(2rem, 5vw, 2.75rem);
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: clamp(2rem, 4vw, 3rem);
+      position: relative;
+      text-transform: uppercase;
+    }
+
+    body.dark-mode .section-title {
+      color: #ffd700;
+    }
+
+    .section-title::after {
+      content: '';
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(to right, #ffd700, #ffeb3b);
+      position: absolute;
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      animation: pulse 2s infinite ease-in-out;
+    }
+
+    /* Header */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: linear-gradient(135deg, #003087, #0056b3);
+      color: white;
+      padding: 0;
+      z-index: 1000;
+      transition: background 0.4s ease, box-shadow 0.4s ease;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      border-bottom: 2px solid rgba(255, 215, 0, 0.2);
+    }
+
+    header.scrolled {
+      background: linear-gradient(135deg, #002570, #0044a0);
+      box-shadow: 0 6px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    body.dark-mode header {
+      background: linear-gradient(135deg, #1c2526, #2c3e50);
+      border-bottom: 2px solid rgba(255, 215, 0, 0.2);
+    }
+
+    body.dark-mode header.scrolled {
+      background: linear-gradient(135deg, #162022, #263238);
+      box-shadow: 0 6px 25px rgba(255, 215, 0, 0.3);
+    }
+
+    header .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 clamp(15px, 2vw, 20px);
+      height: clamp(70px, 10vw, 90px);
+    }
+
+    header .logo {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: absolute;
+      left: clamp(10px, 2vw, 20px);
+    }
+
+    header .logo img {
+      height: clamp(2.5rem, 5vw, 3.5rem);
+      transition: transform 0.3s ease;
+    }
+
+    header .logo img:hover {
+      transform: scale(1.05);
+    }
+
+    header .logo span {
+      font-size: clamp(0.75rem, 1.5vw, 1rem);
+      font-weight: 600;
+      color: #ffd700;
+      margin-top: 0.25rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    body.dark-mode header .logo span {
+      color: #ffeb3b;
+    }
+
+    nav {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      flex-grow: 1;
+      padding-left: clamp(70px, 8vw, 90px);
+      padding-right: clamp(50px, 6vw, 60px);
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      align-items: center;
+      gap: clamp(0.2rem, 0.6vw, 0.6rem);
+      margin: 0;
+      flex-wrap: nowrap;
+    }
+
+    nav ul li {
+      display: flex;
+      align-items: center;
+    }
+
+    nav ul li a {
+      color: white;
+      font-size: clamp(0.65rem, 1vw, 0.8rem);
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+      padding: clamp(2px, 0.5vw, 4px) clamp(5px, 1vw, 8px);
+      border-radius: 25px;
+      transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
+      position: relative;
+      text-decoration: none;
+      line-height: 1;
+      white-space: nowrap;
+    }
+
+    nav ul li a:hover {
+      color: #ffd700;
+      background: rgba(255, 255, 255, 0.15);
+      transform: translateY(-2px);
+    }
+
+    body.dark-mode nav ul li a {
+      color: #e0e0e0;
+    }
+
+    body.dark-mode nav ul li a:hover {
+      color: #ffd700;
+      background: rgba(255, 215, 0, 0.15);
+    }
+
+    nav ul li a::after {
+      content: '';
+      position: absolute;
+      bottom: 4px;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background: #ffd700;
+      transition: width 0.3s ease, left 0.3s ease;
+    }
+
+    nav ul li a:hover::after {
+      width: 50%;
+      left: 25%;
+    }
+
+    body.dark-mode nav ul li a::after {
+      background: #ffd700;
+    }
+
+    .nav-toggle {
+      display: none;
+      font-size: clamp(1.25rem, 3vw, 1.75rem);
+      cursor: pointer;
+      color: white;
+      transition: transform 0.3s ease;
+      z-index: 1002;
+      position: absolute;
+      right: clamp(60px, 10vw, 80px);
+    }
+
+    .nav-toggle:hover {
+      transform: rotate(90deg);
+    }
+
+    /* Facilities Section */
+    #facilities {
+      position: relative;
+      margin-top: clamp(70px, 10vw, 90px);
+      padding: clamp(2rem, 5vw, 3rem) 0;
+    }
+
+    .facilities-content {
+      position: relative;
+      width: 100%;
+      padding: clamp(1.5rem, 3vw, 2rem);
+      text-align: center;
+      font-size: clamp(1rem, 1.5vw, 1.125rem);
+      color: #555;
+      background: #fff;
+      border-radius: 15px;
+      margin: 2rem auto;
+      max-width: 1200px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+      animation: slideIn 1s ease-out forwards;
+    }
+
+    body.dark-mode .facilities-content {
+      color: #b0b0b0;
+      background: #263238;
+      box-shadow: 0 5px 20px rgba(255, 215, 0, 0.2);
+    }
+
+    .facilities-content p {
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 1s ease-out forwards 0.2s;
+    }
+
+    .facilities-content p:nth-child(2) {
+      animation-delay: 0.4s;
+    }
+
+    /* Facilities Grid */
+    .facilities-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(clamp(250px, 25vw, 300px), 1fr));
+      gap: clamp(1.5rem, 3vw, 2rem);
+      padding: 0 clamp(15px, 2vw, 20px);
+      margin-bottom: clamp(2rem, 4vw, 3rem);
+    }
+
+    .facility-card {
+      background: linear-gradient(135deg, #ffffff, #f0f4f8);
+      padding: clamp(1.5rem, 3vw, 2rem);
+      border-radius: 15px;
+      text-align: center;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      border: 1px solid rgba(0, 48, 135, 0.1);
+      position: relative;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 1s ease-out forwards;
+    }
+
+    .facility-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(0, 48, 135, 0.1), rgba(255, 215, 0, 0.1));
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      z-index: -1;
+    }
+
+    .facility-card:hover::before {
+      opacity: 1;
+    }
+
+    .facility-card:hover {
+      transform: translateY(-10px) scale(1.05);
+      box-shadow: 0 15px 35px rgba(0, 48, 135, 0.3);
+    }
+
+    body.dark-mode .facility-card {
+      background: linear-gradient(135deg, #1c2526, #2c3e50);
+      border: 1px solid rgba(255, 215, 0, 0.2);
+    }
+
+    body.dark-mode .facility-card:hover {
+      box-shadow: 0 15px 35px rgba(255, 215, 0, 0.4);
+    }
+
+    .facility-card i {
+      font-size: clamp(2rem, 4vw, 2.5rem);
+      color: #003087;
+      margin-bottom: 1rem;
+      transition: transform 0.3s ease, color 0.3s ease;
+    }
+
+    body.dark-mode .facility-card i {
+      color: #ffd700;
+    }
+
+    .facility-card i:hover {
+      transform: scale(1.2);
+      color: #0056b3;
+    }
+
+    body.dark-mode .facility-card i:hover {
+      color: #ffeb3b;
+    }
+
+    .facility-card h4 {
+      color: #003087;
+      font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+      margin-bottom: 0.5rem;
+    }
+
+    body.dark-mode .facility-card h4 {
+      color: #ffd700;
+    }
+
+    .facility-card p {
+      color: #555;
+      font-size: clamp(0.875rem, 1.5vw, 1rem);
+      margin-bottom: 0.5rem;
+    }
+
+    body.dark-mode .facility-card p {
+      color: #b0b0b0;
+    }
+
+    /* Virtual Tour (Image-Based) */
+    .virtual-tour {
+      margin-bottom: clamp(2rem, 4vw, 3rem);
+      text-align: center;
+    }
+
+    .tour-gallery {
+      position: relative;
+      width: 100%;
+      height: 600px;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    body.dark-mode .tour-gallery {
+      box-shadow: 0 5px 20px rgba(255, 215, 0, 0.2);
+    }
+
+    .tour-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+
+    .tour-image.active {
+      opacity: 1;
+    }
+
+    .tour-caption {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0, 48, 135, 0.8);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 50px;
+      font-size: clamp(1rem, 1.5vw, 1.125rem);
+      font-weight: 500;
+      transition: background 0.3s ease;
+    }
+
+    body.dark-mode .tour-caption {
+      background: rgba(255, 215, 0, 0.8);
+      color: #003087;
+    }
+
+    .tour-controls {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+    }
+
+    .tour-controls button {
+      background: linear-gradient(135deg, #003087, #0056b3);
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 50px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+
+    .tour-controls button:hover {
+      transform: scale(1.05);
+      background: linear-gradient(135deg, #0056b3, #007bff);
+    }
+
+    body.dark-mode .tour-controls button {
+      background: linear-gradient(135deg, #ffd700, #ffeb3b);
+      color: #003087;
+    }
+
+    body.dark-mode .tour-controls button:hover {
+      background: linear-gradient(135deg, #ffeb3b, #fff59d);
+    }
+
+    /* Interactive Map */
+    .interactive-map {
+      margin-bottom: clamp(2rem, 4vw, 3rem);
+    }
+
+    .map {
+      width: 100%;
+      border-radius: 10px;
+      border: 2px solid #003087; /* Blue border for school theme */
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
+
+    body.dark-mode .map {
+      border-color: #ffd700; /* Yellow border in dark mode */
+      box-shadow: 0 5px 20px rgba(255, 215, 0, 0.2);
+    }
+
+    .map-info {
+      padding: 1rem;
+      background: #fff;
+      border-radius: 10px;
+      margin-top: 1rem;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    body.dark-mode .map-info {
+      background: #263238;
+      box-shadow: 0 5px 15px rgba(255, 215, 0, 0.2);
+    }
+
+    .map-info p {
+      margin: 0.5rem 0;
+      color: #555;
+    }
+
+    body.dark-mode .map-info p {
+      color: #b0b0b0;
+    }
+
+    .map-info a {
+      color: #003087;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .map-info a:hover {
+      color: #0056b3;
+    }
+
+    body.dark-mode .map-info a {
+      color: #ffd700;
+    }
+
+    body.dark-mode .map-info a:hover {
+      color: #ffeb3b;
+    }
+
+    /* Booking Form */
+    .booking-form {
+      max-width: 600px;
+      margin: 2rem auto;
+      padding: clamp(1.5rem, 3vw, 2rem);
+      background: #fff;
+      border-radius: 15px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    body.dark-mode .booking-form {
+      background: #263238;
+      box-shadow: 0 5px 20px rgba(255, 215, 0, 0.2);
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+      display: block;
+      color: #003087;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+    }
+
+    body.dark-mode .form-group label {
+      color: #ffd700;
+    }
+
+    /* Circular Input Styling for Booking Form */
+    .booking-form input,
+    .booking-form select {
+      width: 100%;
+      padding: 12px 15px;
+      border: none;
+      border-radius: 50px;
+      font-size: clamp(0.875rem, 1.5vw, 1rem);
+      background: linear-gradient(135deg, #ffffff, #f0f4f8);
+      box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+      color: #333;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+      outline: none;
+    }
+
+    body.dark-mode .booking-form input,
+    body.dark-mode .booking-form select {
+      background: linear-gradient(135deg, #1c2526, #2c3e50);
+      color: #e0e0e0;
+      box-shadow: inset 0 2px 5px rgba(255, 215, 0, 0.1);
+    }
+
+    .booking-form input:focus,
+    .booking-form select:focus {
+      transform: scale(1.05);
+      box-shadow: 0 0 10px rgba(0, 48, 135, 0.5);
+      background: linear-gradient(135deg, #e6f0fa, #ffffff);
+    }
+
+    body.dark-mode .booking-form input:focus,
+    body.dark-mode .booking-form select:focus {
+      box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+      background: linear-gradient(135deg, #263238, #1c2526);
+    }
+
+    .booking-form input::placeholder {
+      color: #888;
+    }
+
+    body.dark-mode .booking-form input::placeholder {
+      color: #aaa;
+    }
+
+    .booking-form button {
+      background: linear-gradient(135deg, #003087, #0056b3);
+      color: white;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 50px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+
+    .booking-form button:hover {
+      transform: scale(1.05);
+      background: linear-gradient(135deg, #0056b3, #007bff);
+    }
+
+    body.dark-mode .booking-form button {
+      background: linear-gradient(135deg, #ffd700, #ffeb3b);
+      color: #003087;
+    }
+
+    body.dark-mode .booking-form button:hover {
+      background: linear-gradient(135deg, #ffeb3b, #fff59d);
+    }
+
+    #booking-message {
+      margin-top: 1rem;
+      color: #003087;
+      text-align: center;
+    }
+
+    body.dark-mode #booking-message {
+      color: #ffd700;
+    }
+
+    /* Guidelines */
+    .guidelines {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: clamp(1.5rem, 3vw, 2rem);
+      background: #fff;
+      border-radius: 15px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    body.dark-mode .guidelines {
+      background: #263238;
+      box-shadow: 0 5px 20px rgba(255, 215, 0, 0.2);
+    }
+
+    .guidelines ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .guidelines li {
+      position: relative;
+      padding-left: 1.5rem;
+      margin-bottom: 1rem;
+      color: #555;
+      font-size: clamp(0.875rem, 1.5vw, 1rem);
+    }
+
+    body.dark-mode .guidelines li {
+      color: #b0b0b0;
+    }
+
+    .guidelines li::before {
+      content: '✓';
+      color: #003087;
+      position: absolute;
+      left: 0;
+      font-weight: 700;
+    }
+
+    body.dark-mode .guidelines li::before {
+      color: #ffd700;
+    }
+
+    /* Footer */
+    footer {
+      background: linear-gradient(135deg, #003087, #0056b3);
+      color: white;
+      padding: clamp(2.5rem, 5vw, 3.75rem) 0 clamp(1rem, 2vw, 1.25rem);
+    }
+
+    body.dark-mode footer {
+      background: linear-gradient(135deg, #1c2526, #263238);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(clamp(200px, 25vw, 300px), 1fr));
+      gap: clamp(1.5rem, 3vw, 2.5rem);
+      margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+    }
+
+    .footer-column {
+      padding: clamp(1rem, 2vw, 1.5rem);
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+
+    .footer-column:hover {
+      transform: translateY(-5px);
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .footer-column h3 {
+      color: #ffd700;
+      margin-bottom: 1rem;
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      font-weight: 600;
+    }
+
+    .footer-column p {
+      margin: 0.5rem 0;
+      font-size: clamp(0.85rem, 1.5vw, 0.95rem);
+      line-height: 1.5;
+      color: #e0e0e0;
+    }
+
+    .footer-column:first-child p {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .footer-column:first-child p::before {
+      font-family: "Font Awesome 5 Free";
+      font-weight: 900;
+      color: #ffd700;
+    }
+
+    .footer-column:first-child p:nth-child(2)::before {
+      content: "\f3c5";
+    }
+
+    .footer-column:first-child p:nth-child(3)::before {
+      content: "\f095";
+    }
+
+    .footer-column:first-child p:nth-child(4)::before {
+      content: "\f0e0";
+    }
+
+    .footer-column:first-child p:nth-child(5)::before {
+      content: "\f017";
+    }
+
+    .footer-column a {
+      color: #e0e0e0;
+      text-decoration: none;
+      margin: 0.5rem 0;
+      font-size: clamp(0.85rem, 1.5vw, 0.95rem);
+      transition: color 0.3s ease, transform 0.3s ease;
+      display: inline-block;
+    }
+
+    .footer-column a:hover {
+      color: #ffd700;
+      transform: translateX(5px);
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .social-icons a {
+      font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+      color: #e0e0e0;
+      transition: transform 0.3s ease, color 0.3s ease;
+    }
+
+    .social-icons a:hover {
+      transform: scale(1.2);
+      color: #ffd700;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: clamp(0.75rem, 1.5vw, 1.25rem);
+    }
+
+    .footer-bottom p {
+      margin: 0.5rem 0;
+      color: #e0e0e0;
+      font-size: clamp(0.85rem, 1.5vw, 0.95rem);
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .footer-links a {
+      color: #e0e0e0;
+      margin: 0 0.5rem;
+      text-decoration: none;
+      font-size: clamp(0.85rem, 1.5vw, 0.95rem);
+      transition: color 0.3s ease;
+    }
+
+    .footer-links a:hover {
+      color: #ffd700;
+    }
+
+    /* Student Portal Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+      animation: fadeIn 0.5s ease-out forwards;
+    }
+
+    .modal-content {
+      background: white;
+      padding: clamp(1.5rem, 3vw, 2rem);
+      border-radius: 15px;
+      width: 90%;
+      max-width: 400px;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      animation: slideIn 0.5s ease-out forwards;
+    }
+
+    body.dark-mode .modal-content {
+      background: #263238;
+      box-shadow: 0 10px 25px rgba(255, 215, 0, 0.3);
+    }
+
+    .close-modal {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      cursor: pointer;
+      color: #003087;
+      transition: transform 0.3s ease;
+    }
+
+    .close-modal:hover {
+      transform: rotate(90deg);
+    }
+
+    body.dark-mode .close-modal {
+      color: #ffd700;
+    }
+
+    #portal-login {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    /* Circular Input Styling for Modal */
+    #portal-login input {
+      width: 100%;
+      padding: 12px 15px;
+      border: none;
+      border-radius: 50px;
+      font-size: clamp(0.875rem, 1.5vw, 1rem);
+      background: linear-gradient(135deg, #ffffff, #f0f4f8);
+      box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+      color: #333;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+      outline: none;
+      text-align: center;
+    }
+
+    body.dark-mode #portal-login input {
+      background: linear-gradient(135deg, #1c2526, #2c3e50);
+      color: #e0e0e0;
+      box-shadow: inset 0 2px 5px rgba(255, 215, 0, 0.1);
+    }
+
+    #portal-login input:focus {
+      transform: scale(1.05);
+      box-shadow: 0 0 10px rgba(0, 48, 135, 0.5);
+      background: linear-gradient(135deg, #e6f0fa, #ffffff);
+    }
+
+    body.dark-mode #portal-login input:focus {
+      box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+      background: linear-gradient(135deg, #263238, #1c2526);
+    }
+
+    #portal-login input::placeholder {
+      color: #888;
+    }
+
+    body.dark-mode #portal-login input::placeholder {
+      color: #aaa;
+    }
+
+    #portal-login button {
+      background: linear-gradient(135deg, #003087, #0056b3);
+      color: white;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 50px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+
+    #portal-login button:hover {
+      transform: scale(1.05);
+      background: linear-gradient(135deg, #0056b3, #007bff);
+    }
+
+    body.dark-mode #portal-login button {
+      background: linear-gradient(135deg, #ffd700, #ffeb3b);
+      color: #003087;
+    }
+
+    /* Animation Keyframes */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateY(50px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes pulse {
+      0% { transform: translateX(-50%) scaleX(1); }
+      50% { transform: translateX(-50%) scaleX(1.2); }
+      100% { transform: translateX(-50%) scaleX(1); }
+    }
+
+    /* Responsive Design */
+    @media (max-width: 1400px) {
+      nav { padding-left: clamp(60px, 7vw, 80px); padding-right: clamp(45px, 5.5vw, 55px); }
+      nav ul { gap: clamp(0.15rem, 0.5vw, 0.5rem); }
+      nav ul li a { font-size: clamp(0.6rem, 0.9vw, 0.75rem); padding: clamp(2px, 0.4vw, 3px) clamp(4px, 0.8vw, 6px); letter-spacing: 0.2px; }
+      .dark-mode-toggle { font-size: clamp(0.9rem, 1.4vw, 1.1rem); padding: clamp(4px, 0.7vw, 6px); }
+    }
+
+    @media (max-width: 1300px) {
+      nav { padding-left: clamp(55px, 6vw, 70px); padding-right: clamp(40px, 5vw, 50px); }
+      nav ul { gap: clamp(0.1rem, 0.4vw, 0.4rem); }
+      nav ul li a { font-size: clamp(0.55rem, 0.85vw, 0.7rem); padding: clamp(1px, 0.3vw, 2px) clamp(3px, 0.7vw, 5px); letter-spacing: 0.1px; }
+      .dark-mode-toggle { font-size: clamp(0.85rem, 1.3vw, 1rem); padding: clamp(4px, 0.6vw, 5px); }
+    }
+
+    @media (max-width: 1270px) {
+      nav { padding-left: clamp(50px, 5vw, 60px); padding-right: clamp(35px, 4.5vw, 45px); }
+      nav ul { gap: clamp(0.05rem, 0.3vw, 0.3rem); }
+      nav ul li a { font-size: clamp(0.5rem, 0.8vw, 0.65rem); padding: clamp(1px, 0.2vw, 2px) clamp(2px, 0.6vw, 4px); letter-spacing: 0; }
+      .dark-mode-toggle { font-size: clamp(0.8rem, 1.2vw, 0.95rem); padding: clamp(3px, 0.5vw, 4px); }
+    }
+
+    @media (max-width: 1200px) {
+      nav { padding-left: clamp(45px, 4vw, 55px); padding-right: clamp(30px, 4vw, 40px); }
+      nav ul { gap: clamp(0.05rem, 0.2vw, 0.2rem); }
+      nav ul li a { font-size: clamp(0.5rem, 0.75vw, 0.6rem); padding: clamp(1px, 0.2vw, 2px) clamp(2px, 0.5vw, 3px); letter-spacing: 0; }
+      .dark-mode-toggle { font-size: clamp(0.75rem, 1.1vw, 0.9rem); padding: clamp(3px, 0.4vw, 4px); }
+      .facilities-grid { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+      .footer-grid { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+    }
+
+    @media (max-width: 992px) {
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      header .container { height: 70px; }
+      header .logo { left: 10px; }
+      header .logo img { height: 2.75rem; }
+      header .logo span { font-size: 0.875rem; margin-top: 0.2rem; }
+      .dark-mode-toggle { top: 12px; right: 12px; font-size: 1rem; padding: 6px; }
+      .nav-toggle { display: block; right: clamp(45px, 8vw, 50px); font-size: 1.5rem; }
+      nav { padding: 0; }
+      nav ul {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: clamp(200px, 70vw, 250px);
+        height: 100vh;
+        background: #003087;
+        padding: clamp(4rem, 10vw, 5rem) 1rem 1rem;
+        flex-direction: column;
+        gap: 1rem;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+        z-index: 1000;
+        overflow-y: auto;
+      }
+      nav ul.active { display: flex; transform: translateX(0); }
+      nav ul li { margin: 0; }
+      nav ul li a { font-size: 1rem; padding: 10px 20px; width: 100%; text-align: left; border-radius: 0; }
+      body.dark-mode nav ul { background: #1c2526; }
+      body.nav-open::after {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+      }
+      .facilities-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .tour-gallery { height: 400px; }
+    }
+
+    @media (max-width: 480px) {
+      header .container { height: 60px; }
+      header .logo img { height: 2.25rem; }
+      header .logo span { font-size: 0.75rem; margin-top: 0.15rem; }
+      .dark-mode-toggle { top: 10px; right: 10px; font-size: 0.875rem; padding: 5px; }
+      .nav-toggle { right: 40px; font-size: 1.25rem; }
+      nav ul { width: clamp(180px, 70vw, 200px); }
+      .facility-card { padding: 1.25rem; }
+      .tour-gallery { height: 300px; }
+    }
+
+    @media (max-width: 360px) {
+      .dark-mode-toggle { font-size: 0.75rem; padding: 4px; }
+      .nav-toggle { right: 35px; font-size: 1.125rem; }
+      header .logo img { height: 1.75rem; }
+      header .logo span { font-size: 0.65rem; }
+      .tour-gallery { height: 250px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Dark Mode Toggle -->
+  <div class="dark-mode-toggle">
+    <i class="fas fa-moon"></i>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <div class="logo">
+        <a href="index.html"><img src="winsomite.jpg" alt="Winsome Model Schools Logo" loading="lazy"></a>
+        <span>Winsome</span>
+      </div>
+      <div class="nav-toggle" onclick="toggleNav()"><i class="fas fa-bars"></i></div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="academics.html">Academics</a></li>
+          <li><a href="admissions.html">Admissions</a></li>
+          <li><a href="faculty.html">Faculty & Staff</a></li>
+          <li><a href="facilities.html">Facilities</a></li>
+          <li><a href="student-life.html">Student Life</a></li>
+          <li><a href="news.html">News & Events</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+          <li><a href="#student-portal" onclick="openStudentPortal()">Student Portal</a></li>
+          <li><a href="admin.html">Admin Dashboard</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Facilities Section -->
+  <section id="facilities" class="container">
+    <h2 class="section-title">Our Facilities</h2>
+    <div class="facilities-content">
+      <p>At Winsome Model Schools, we pride ourselves on providing state-of-the-art facilities that enhance the learning experience. From advanced laboratories to expansive sports complexes, our infrastructure is designed to support both academic and extracurricular growth.</p>
+      <p>Explore our facilities below, take a virtual tour, and even book a space for events or activities.</p>
+    </div>
+
+    <!-- Facilities Grid -->
+    <div class="facilities-grid">
+      <div class="facility-card">
+        <i class="fas fa-chalkboard animate-icon"></i>
+        <h4>Smart Classrooms</h4>
+        <p>Equipped with interactive smartboards, projectors, and ergonomic seating for an immersive learning experience.</p>
+        <p>Capacity: 30 students per classroom</p>
+        <p>Features: High-speed Wi-Fi, air conditioning, digital resources</p>
+      </div>
+      <div class="facility-card">
+        <i class="fas fa-flask animate-icon"></i>
+        <h4>Science Laboratories</h4>
+        <p>Advanced labs for Physics, Chemistry, and Biology with modern equipment and safety protocols.</p>
+        <p>Capacity: 25 students per lab</p>
+        <p>Features: Fume hoods, microscopes, chemical storage</p>
+      </div>
+      <div class="facility-card">
+        <i class="fas fa-book animate-icon"></i>
+        <h4>Library</h4>
+        <p>A vast collection of over 10,000 books, e-books, journals, and digital resources.</p>
+        <p>Capacity: 100 students</p>
+        <p>Features: Quiet study areas, computer stations, online access</p>
+      </div>
+      <div class="facility-card">
+        <i class="fas fa-futbol animate-icon"></i>
+        <h4>Sports Complex</h4>
+        <p>Includes a football field, basketball court, swimming pool, and indoor gym.</p>
+        <p>Capacity: 500 spectators</p>
+        <p>Features: Changing rooms, equipment storage, floodlights</p>
+      </div>
+      <div class="facility-card">
+        <i class="fas fa-laptop animate-icon"></i>
+        <h4>ICT Center</h4>
+        <p>State-of-the-art computer labs with high-speed internet and the latest software.</p>
+        <p>Capacity: 40 students</p>
+        <p>Features: Coding stations, VR setups, 3D printers</p>
+      </div>
+      <div class="facility-card">
+        <i class="fas fa-theater-masks animate-icon"></i>
+        <h4>Auditorium</h4>
+        <p>A 500-seat auditorium for events, performances, and assemblies.</p>
+        <p>Features: Stage lighting, sound system, projector</p>
+        <p>Availability: Bookable for events</p>
+      </div>
+    </div>
+
+    <!-- 3D Virtual Tour (Image-Based) -->
+    <div class="virtual-tour">
+      <h3 class="section-title">Virtual Tour</h3>
+      <div class="tour-gallery" id="virtual-tour-gallery">
+        <img src="classroom.jpg" alt="Smart Classroom" class="tour-image active" data-location="classroom">
+        <img src="science lab.jpg" alt="Science Lab" class="tour-image" data-location="lab">
+        <img src="library.jpg" alt="Library" class="tour-image" data-location="library">
+        <img src="sportcomplex.jpg" alt="Sports Complex" class="tour-image" data-location="sports">
+        <div class="tour-caption" id="tour-caption">Smart Classroom</div>
+      </div>
+      <div class="tour-controls">
+        <button onclick="tourNavigate('classroom')">Classroom</button>
+        <button onclick="tourNavigate('lab')">Science Lab</button>
+        <button onclick="tourNavigate('library')">Library</button>
+        <button onclick="tourNavigate('sports')">Sports Complex</button>
+      </div>
+    </div>
+
+    <!-- Interactive Map (Iframe) -->
+    <div class="interactive-map">
+      <h3 class="section-title">Find Us</h3>
+      <div class="map">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3963.9523159999997!2d3.3326!3d6.6721!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zWinsome%20Model%20Schools%2C%20Araromi%20Street%2C%20Ifako-Jaiye%2C%20Ojooromo%2C%20Lagos%2C%20Nigeria!5e0!3m2!1sen!2sng!4v1697212345678"
+          width="100%"
+          height="300"
+          style="border:0;"
+          allowfullscreen=""
+          loading="lazy">
+        </iframe>
+      </div>
+      <div class="map-info">
+        <p><strong>Location:</strong> Araromi Street, Ifako-Jaiye, Ojooromo, Lagos, Nigeria</p>
+        <p><strong>Coordinates:</strong> 6.6721° N, 3.3326° E</p>
+        <p><strong>Phone:</strong> +234 803 231 9017</p>
+        <p><strong>Directions:</strong> <a href="https://maps.google.com/?q=6.6721,3.3326" target="_blank">Get Directions on Google Maps</a></p>
+      </div>
+    </div>
+
+    <!-- Facility Booking Form -->
+    <h3 class="section-title">Book a Facility</h3>
+    <div class="booking-form">
+      <form id="booking-form" onsubmit="handleBookingSubmit(event)">
+        <div class="form-group">
+          <label for="facility">Select Facility:</label>
+          <select id="facility" name="facility" required>
+            <option value="auditorium">Auditorium</option>
+            <option value="sports-complex">Sports Complex</option>
+            <option value="ict-center">ICT Center</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="booking-date">Booking Date:</label>
+          <input type="date" id="booking-date" name="booking-date" required>
+        </div>
+        <div class="form-group">
+          <label for="booking-time">Booking Time:</label>
+          <input type="time" id="booking-time" name="booking-time" required>
+        </div>
+        <div class="form-group">
+          <label for="event-name">Event Name:</label>
+          <input type="text" id="event-name" name="event-name" placeholder="Event Name" required>
+        </div>
+        <div class="form-group">
+          <label for="contact-person">Contact Person:</label>
+          <input type="text" id="contact-person" name="contact-person" placeholder="Contact Person" required>
+        </div>
+        <div class="form-group">
+          <label for="contact-email">Contact Email:</label>
+          <input type="email" id="contact-email" name="contact-email" placeholder="Contact Email" required>
+        </div>
+        <button type="submit">Submit Booking Request</button>
+      </form>
+      <p id="booking-message"></p>
+    </div>
+
+    <!-- Facility Guidelines -->
+    <h3 class="section-title">Facility Usage Guidelines</h3>
+    <div class="guidelines">
+      <ul>
+        <li>All bookings must be made at least 7 days in advance.</li>
+        <li>Facilities are available for school-related events and approved community activities.</li>
+        <li>Users must adhere to safety protocols and clean up after use.</li>
+        <li>Damages to facilities will incur a fine based on repair costs.</li>
+        <li>Cancellations must be made 48 hours prior to the booking date.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-column">
+          <h3>Winsome Model Schools</h3>
+          <p>Araromi Street, Ifako-Jaiye, Ojooromo, Lagos, Nigeria</p>
+          <p>Phone: +234 803 231 9017</p>
+          <p>Email: info@winsomemodelschools.org</p>
+          <p>Hours: Mon-Fri 8am-6pm, Sat 9am-2pm</p>
+        </div>
+        <div class="footer-column">
+          <h3>Quick Links</h3>
+          <a href="about.html">About Us</a>
+          <a href="academics.html">Academics</a>
+          <a href="admissions.html">Admissions</a>
+          <a href="faculty.html">Faculty & Staff</a>
+          <a href="facilities.html">Facilities</a>
+          <a href="student-life.html">Student Life</a>
+          <a href="news.html">News & Events</a>
+          <a href="contact.html">Contact Us</a>
+          <a href="admin.html">Admin Dashboard</a>
+        </div>
+        <div class="footer-column">
+          <h3>Explore More</h3>
+          <a href="news.html#calendar">Event Calendar</a>
+          <a href="facilities.html#virtual-tour">Virtual Tour</a>
+          <a href="student-life.html#gallery">Student Gallery</a>
+          <a href="contact.html#newsletter">Newsletter Signup</a>
+        </div>
+        <div class="footer-column">
+          <h3>Follow Us</h3>
+          <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook-f animate-icon"></i></a>
+            <a href="#"><i class="fab fa-twitter animate-icon"></i></a>
+            <a href="#"><i class="fab fa-instagram animate-icon"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in animate-icon"></i></a>
+            <a href="#"><i class="fab fa-youtube animate-icon"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 Winsome Model Schools. All Rights Reserved.</p>
+        <div class="footer-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">FAQs</a>
+          <a href="#">Accessibility</a>
+          <a href="#">Sitemap</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Student Portal Modal -->
+  <div id="student-portal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal" onclick="closeStudentPortal()">×</span>
+      <h3>Student Portal Login</h3>
+      <form id="portal-login" onsubmit="handlePortalLogin(event)">
+        <input type="text" name="username" placeholder="Username" required>
+        <input type="password" name="password" placeholder="Password" required>
+        <button type="submit">Login</button>
+      </form>
+      <p id="portal-message"></p>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollTrigger.min.js"></script>
+  <script>
+    // Dark Mode Toggle
+    document.querySelector('.dark-mode-toggle').addEventListener('click', () => {
+      const body = document.body;
+      const icon = document.querySelector('.dark-mode-toggle i');
+      body.classList.toggle('dark-mode');
+      icon.classList.toggle('fa-moon');
+      icon.classList.toggle('fa-sun');
+    });
+
+    // Navigation Toggle for Mobile
+    window.toggleNav = function () {
+      const nav = document.querySelector('nav ul');
+      nav.classList.toggle('active');
+      document.body.classList.toggle('nav-open');
+    };
+
+    // Close Mobile Nav When Clicking Outside
+    document.addEventListener('click', (e) => {
+      const nav = document.querySelector('nav ul');
+      const navToggle = document.querySelector('.nav-toggle');
+      if (!nav.contains(e.target) && !navToggle.contains(e.target) && nav.classList.contains('active')) {
+        nav.classList.remove('active');
+        document.body.classList.remove('nav-open');
+      }
+    });
+
+    // Header Scroll Effect
+    window.addEventListener('scroll', () => {
+      const header = document.querySelector('header');
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+
+    // Student Portal Modal Functions
+    window.openStudentPortal = function (event) {
+      event.preventDefault();
+      const modal = document.getElementById('student-portal');
+      if (modal) {
+        modal.style.display = 'flex';
+        console.log('Student Portal modal opened');
+      } else {
+        console.error('Student Portal modal not found in the DOM');
+      }
+    };
+
+    window.closeStudentPortal = function () {
+      const modal = document.getElementById('student-portal');
+      if (modal) {
+        modal.style.display = 'none';
+        console.log('Student Portal modal closed');
+      } else {
+        console.error('Student Portal modal not found in the DOM');
+      }
+    };
+
+    window.handlePortalLogin = function (event) {
+      event.preventDefault();
+      const message = document.getElementById('portal-message');
+      if (message) {
+        message.textContent = 'Login functionality coming soon!';
+        message.style.color = document.body.classList.contains('dark-mode') ? '#ffeb3b' : '#003087';
+      } else {
+        console.error('Portal message element not found');
+      }
+    };
+
+    // Debugging: Check if the Student Portal link is working
+    document.addEventListener('DOMContentLoaded', () => {
+      const studentPortalLink = document.querySelector('nav ul li a[href="#student-portal"]');
+      if (studentPortalLink) {
+        studentPortalLink.addEventListener('click', openStudentPortal);
+        console.log('Student Portal link event listener added');
+      } else {
+        console.error('Student Portal link not found in the navigation');
+      }
+    });
+
+    // Virtual Tour Navigation (Image-Based)
+    window.tourNavigate = function (location) {
+      const images = document.querySelectorAll('.tour-image');
+      const caption = document.getElementById('tour-caption');
+      
+      images.forEach(img => {
+        if (img.getAttribute('data-location') === location) {
+          img.classList.add('active');
+          caption.textContent = img.alt;
+        } else {
+          img.classList.remove('active');
+        }
+      });
+    };
+
+    // Booking Form Submission
+    window.handleBookingSubmit = function (event) {
+      event.preventDefault();
+      const message = document.getElementById('booking-message');
+      if (message) {
+        message.textContent = 'Booking request submitted! We will review and contact you soon.';
+        message.style.color = document.body.classList.contains('dark-mode') ? '#ffeb3b' : '#003087';
+        document.getElementById('booking-form').reset();
+      } else {
+        console.error('Booking message element not found');
+      }
+    };
+
+    // GSAP Animations for Cards and Map
+    gsap.utils.toArray('.facility-card').forEach(card => {
+      gsap.from(card, {
+        scrollTrigger: {
+          trigger: card,
+          start: 'top 80%',
+          end: 'top 50%',
+          scrub: 1,
+        },
+        opacity: 0,
+        y: 50,
+        duration: 1,
+      });
+    });
+
+    // Animate the map
+    gsap.from(".map", {
+      scrollTrigger: {
+        trigger: ".map",
+        start: "top 80%",
+        toggleActions: "play none none reverse"
+      },
+      opacity: 0,
+      scale: 0.9,
+      duration: 1.5,
+      ease: "power2.out"
+    });
+  </script>
+</body>
+</html>

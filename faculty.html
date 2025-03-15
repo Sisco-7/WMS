@@ -1,0 +1,1546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Meet the faculty and staff at Winsome Model Schools in Ifako, Lagos, Nigeria. Learn about our qualified educators, their achievements, and development programs.">
+  <meta name="theme-color" content="#003087">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="assets/icons/icon-192x192.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <title>Faculty & Staff - Winsome Model Schools</title>
+  <style>
+    /* Reset and Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #f9f9f9;
+      color: #333;
+      line-height: 1.8;
+      overflow-x: hidden;
+      transition: background 0.5s ease, color 0.5s ease;
+    }
+
+    body.dark-mode {
+      background: #1c2526;
+      color: #e0e0e0;
+    }
+
+    /* Dark Mode Toggle */
+    .dark-mode-toggle {
+      position: fixed;
+      top: 15px;
+      right: 15px;
+      font-size: clamp(1rem, 1.5vw, 1.2rem);
+      cursor: pointer;
+      color: #fff;
+      background: #003087;
+      padding: clamp(5px, 0.8vw, 7px);
+      border-radius: 8px;
+      z-index: 1001;
+      transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .dark-mode-toggle:hover {
+      transform: scale(1.05);
+      background: #0056b3;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    body.dark-mode .dark-mode-toggle {
+      background: #ffd700;
+      color: #003087;
+      box-shadow: 0 2px 8px rgba(255, 215, 0, 0.3);
+    }
+
+    body.dark-mode .dark-mode-toggle:hover {
+      background: #ffeb3b;
+      box-shadow: 0 4px 12px rgba(255, 215, 0, 0.4);
+    }
+
+    /* Utility Classes */
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 clamp(15px, 2vw, 20px);
+      width: 100%;
+    }
+
+    .btn {
+      display: inline-block;
+      background: linear-gradient(135deg, #003087, #0056b3);
+      color: white;
+      padding: clamp(10px, 2vw, 14px) clamp(20px, 3vw, 30px);
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: clamp(0.875rem, 2vw, 1.125rem);
+      text-decoration: none;
+      transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 5px 15px rgba(0, 48, 135, 0.3);
+    }
+
+    .btn:hover {
+      transform: translateY(-5px) scale(1.05);
+      background: linear-gradient(135deg, #0056b3, #007bff);
+      box-shadow: 0 10px 25px rgba(0, 48, 135, 0.6);
+    }
+
+    body.dark-mode .btn {
+      background: linear-gradient(135deg, #ffd700, #ffeb3b);
+      color: #003087;
+      box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+    }
+
+    body.dark-mode .btn:hover {
+      background: linear-gradient(135deg, #ffeb3b, #fff59d);
+      box-shadow: 0 10px 25px rgba(255, 215, 0, 0.7);
+    }
+
+    .section-title {
+      color: #003087;
+      font-size: clamp(2rem, 5vw, 2.75rem);
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: clamp(2rem, 4vw, 3rem);
+      position: relative;
+      text-transform: uppercase;
+    }
+
+    body.dark-mode .section-title {
+      color: #ffd700;
+    }
+
+    .section-title::after {
+      content: '';
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(to right, #ffd700, #ffeb3b);
+      position: absolute;
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      animation: pulse 2s infinite ease-in-out;
+    }
+
+    /* Header */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: linear-gradient(135deg, #003087, #0056b3);
+      color: white;
+      padding: 0;
+      z-index: 1000;
+      transition: background 0.4s ease, box-shadow 0.4s ease;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      border-bottom: 2px solid rgba(255, 215, 0, 0.2);
+    }
+
+    header.scrolled {
+      background: linear-gradient(135deg, #002570, #0044a0);
+      box-shadow: 0 6px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    body.dark-mode header {
+      background: linear-gradient(135deg, #1c2526, #2c3e50);
+      border-bottom: 2px solid rgba(255, 215, 0, 0.2);
+    }
+
+    body.dark-mode header.scrolled {
+      background: linear-gradient(135deg, #162022, #263238);
+      box-shadow: 0 6px 25px rgba(255, 215, 0, 0.3);
+    }
+
+    header .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 clamp(15px, 2vw, 20px);
+      height: clamp(70px, 10vw, 90px);
+    }
+
+    header .logo {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: absolute;
+      left: clamp(10px, 2vw, 20px);
+    }
+
+    header .logo img {
+      height: clamp(2.5rem, 5vw, 3.5rem);
+      transition: transform 0.3s ease;
+    }
+
+    header .logo img:hover {
+      transform: scale(1.05);
+    }
+
+    header .logo span {
+      font-size: clamp(0.75rem, 1.5vw, 1rem);
+      font-weight: 600;
+      color: #ffd700;
+      margin-top: 0.25rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    body.dark-mode header .logo span {
+      color: #ffeb3b;
+    }
+
+    nav {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      flex-grow: 1;
+      padding-left: clamp(70px, 8vw, 90px);
+      padding-right: clamp(50px, 6vw, 60px);
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      align-items: center;
+      gap: clamp(0.2rem, 0.6vw, 0.6rem);
+      margin: 0;
+      flex-wrap: nowrap;
+    }
+
+    nav ul li {
+      display: flex;
+      align-items: center;
+    }
+
+    nav ul li a {
+      color: white;
+      font-size: clamp(0.65rem, 1vw, 0.8rem);
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+      padding: clamp(2px, 0.5vw, 4px) clamp(5px, 1vw, 8px);
+      border-radius: 25px;
+      transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
+      position: relative;
+      text-decoration: none;
+      line-height: 1;
+      white-space: nowrap;
+    }
+
+    nav ul li a:hover {
+      color: #ffd700;
+      background: rgba(255, 255, 255, 0.15);
+      transform: translateY(-2px);
+    }
+
+    body.dark-mode nav ul li a {
+      color: #e0e0e0;
+    }
+
+    body.dark-mode nav ul li a:hover {
+      color: #ffd700;
+      background: rgba(255, 215, 0, 0.15);
+    }
+
+    nav ul li a::after {
+      content: '';
+      position: absolute;
+      bottom: 4px;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background: #ffd700;
+      transition: width 0.3s ease, left 0.3s ease;
+    }
+
+    nav ul li a:hover::after {
+      width: 50%;
+      left: 25%;
+    }
+
+    body.dark-mode nav ul li a::after {
+      background: #ffd700;
+    }
+
+    .nav-toggle {
+      display: none;
+      font-size: clamp(1.25rem, 3vw, 1.75rem);
+      cursor: pointer;
+      color: white;
+      transition: transform 0.3s ease;
+      z-index: 1002;
+      position: absolute;
+      right: clamp(60px, 10vw, 80px);
+    }
+
+    .nav-toggle:hover {
+      transform: rotate(90deg);
+    }
+
+    /* Faculty Section */
+    #faculty {
+      position: relative;
+      margin-top: clamp(70px, 10vw, 90px);
+      padding: clamp(2rem, 5vw, 3rem) 0;
+    }
+
+    .faculty-content {
+      position: relative;
+      width: 100%;
+      padding: clamp(1.5rem, 3vw, 2rem);
+      text-align: center;
+      font-size: clamp(1rem, 1.5vw, 1.125rem);
+      color: #555;
+      background: #fff;
+      border-radius: 15px;
+      margin: 2rem auto;
+      max-width: 1200px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+      animation: slideIn 1s ease-out forwards;
+    }
+
+    body.dark-mode .faculty-content {
+      color: #b0b0b0;
+      background: #263238;
+      box-shadow: 0 5px 20px rgba(255, 215, 0, 0.2);
+    }
+
+    .faculty-content p {
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 1s ease-out forwards 0.2s;
+    }
+
+    .faculty-content p:nth-child(2) {
+      animation-delay: 0.4s;
+    }
+
+    /* Faculty Search and Filter */
+    .faculty-search-filter {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: clamp(1rem, 2vw, 1.5rem);
+      margin-bottom: clamp(2rem, 4vw, 3rem);
+      flex-wrap: wrap;
+    }
+
+    .search-bar {
+      position: relative;
+      max-width: 400px;
+      width: 100%;
+    }
+
+    .search-bar i {
+      position: absolute;
+      left: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #888;
+      font-size: clamp(1rem, 1.5vw, 1.125rem);
+    }
+
+    body.dark-mode .search-bar i {
+      color: #aaa;
+    }
+
+    /* Circular Input Styling for Search Bar */
+    #faculty-search {
+      width: 100%;
+      padding: 12px 15px 12px 40px;
+      border: none;
+      border-radius: 50px;
+      font-size: clamp(0.875rem, 1.5vw, 1rem);
+      background: linear-gradient(135deg, #ffffff, #f0f4f8);
+      box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+      color: #333;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+      outline: none;
+    }
+
+    body.dark-mode #faculty-search {
+      background: linear-gradient(135deg, #1c2526, #2c3e50);
+      color: #e0e0e0;
+      box-shadow: inset 0 2px 5px rgba(255, 215, 0, 0.1);
+    }
+
+    #faculty-search:focus {
+      transform: scale(1.05);
+      box-shadow: 0 0 10px rgba(0, 48, 135, 0.5);
+      background: linear-gradient(135deg, #e6f0fa, #ffffff);
+    }
+
+    body.dark-mode #faculty-search:focus {
+      box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+      background: linear-gradient(135deg, #263238, #1c2526);
+    }
+
+    #faculty-search::placeholder {
+      color: #888;
+    }
+
+    body.dark-mode #faculty-search::placeholder {
+      color: #aaa;
+    }
+
+    .faculty-filter {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .faculty-filter label {
+      color: #003087;
+      font-size: clamp(1rem, 1.5vw, 1.125rem);
+      font-weight: 500;
+    }
+
+    body.dark-mode .faculty-filter label {
+      color: #ffd700;
+    }
+
+    /* Circular Select Styling for Filter */
+    #faculty-filter {
+      padding: 12px 15px;
+      border: none;
+      border-radius: 50px;
+      font-size: clamp(0.875rem, 1.5vw, 1rem);
+      background: linear-gradient(135deg, #ffffff, #f0f4f8);
+      box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+      color: #333;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+      outline: none;
+      text-align: center;
+      min-width: 200px;
+    }
+
+    body.dark-mode #faculty-filter {
+      background: linear-gradient(135deg, #1c2526, #2c3e50);
+      color: #e0e0e0;
+      box-shadow: inset 0 2px 5px rgba(255, 215, 0, 0.1);
+    }
+
+    #faculty-filter:focus {
+      transform: scale(1.05);
+      box-shadow: 0 0 10px rgba(0, 48, 135, 0.5);
+      background: linear-gradient(135deg, #e6f0fa, #ffffff);
+    }
+
+    body.dark-mode #faculty-filter:focus {
+      box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+      background: linear-gradient(135deg, #263238, #1c2526);
+    }
+
+    /* Faculty Grid */
+    .faculty-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(clamp(250px, 25vw, 300px), 1fr));
+      gap: clamp(1.5rem, 3vw, 2rem);
+      padding: 0 clamp(15px, 2vw, 20px);
+      margin-bottom: clamp(2rem, 4vw, 3rem);
+    }
+
+    .faculty-card {
+      background: linear-gradient(135deg, #ffffff, #f0f4f8);
+      padding: clamp(1.5rem, 3vw, 2rem);
+      border-radius: 15px;
+      text-align: center;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      border: 1px solid rgba(0, 48, 135, 0.1);
+      position: relative;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 1s ease-out forwards;
+    }
+
+    .faculty-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(0, 48, 135, 0.1), rgba(255, 215, 0, 0.1));
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      z-index: -1;
+    }
+
+    .faculty-card:hover::before {
+      opacity: 1;
+    }
+
+    .faculty-card:hover {
+      transform: translateY(-10px) scale(1.05);
+      box-shadow: 0 15px 35px rgba(0, 48, 135, 0.3);
+    }
+
+    body.dark-mode .faculty-card {
+      background: linear-gradient(135deg, #1c2526, #2c3e50);
+      border: 1px solid rgba(255, 215, 0, 0.2);
+    }
+
+    body.dark-mode .faculty-card:hover {
+      box-shadow: 0 15px 35px rgba(255, 215, 0, 0.4);
+    }
+
+    .faculty-card img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 1rem;
+      border: 3px solid #ffd700;
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+
+    .faculty-card img:hover {
+      transform: scale(1.1);
+      border-color: #ffeb3b;
+    }
+
+    body.dark-mode .faculty-card img {
+      border-color: #ffeb3b;
+    }
+
+    .faculty-card h4 {
+      color: #003087;
+      font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+      margin-bottom: 0.5rem;
+    }
+
+    body.dark-mode .faculty-card h4 {
+      color: #ffd700;
+    }
+
+    .faculty-card p {
+      color: #555;
+      font-size: clamp(0.875rem, 1.5vw, 1rem);
+      margin-bottom: 0.5rem;
+    }
+
+    body.dark-mode .faculty-card p {
+      color: #b0b0b0;
+    }
+
+    .contact-link {
+      display: inline-block;
+      color: #003087;
+      font-weight: 500;
+      text-decoration: none;
+      margin-top: 0.5rem;
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
+
+    .contact-link:hover {
+      color: #0056b3;
+      transform: translateY(-2px);
+    }
+
+    body.dark-mode .contact-link {
+      color: #ffd700;
+    }
+
+    body.dark-mode .contact-link:hover {
+      color: #ffeb3b;
+    }
+
+    /* Achievements Grid */
+    .achievements-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(clamp(250px, 25vw, 300px), 1fr));
+      gap: clamp(1.5rem, 3vw, 2rem);
+      padding: 0 clamp(15px, 2vw, 20px);
+      margin-bottom: clamp(2rem, 4vw, 3rem);
+    }
+
+    .achievement-card {
+      background: linear-gradient(135deg, #ffffff, #f0f4f8);
+      padding: clamp(1.5rem, 3vw, 2rem);
+      border-radius: 15px;
+      text-align: center;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      border: 1px solid rgba(0, 48, 135, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .achievement-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(0, 48, 135, 0.1), rgba(255, 215, 0, 0.1));
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      z-index: -1;
+    }
+
+    .achievement-card:hover::before {
+      opacity: 1;
+    }
+
+    .achievement-card:hover {
+      transform: translateY(-10px) scale(1.05);
+      box-shadow: 0 15px 35px rgba(0, 48, 135, 0.3);
+    }
+
+    body.dark-mode .achievement-card {
+      background: linear-gradient(135deg, #1c2526, #2c3e50);
+      border: 1px solid rgba(255, 215, 0, 0.2);
+    }
+
+    body.dark-mode .achievement-card:hover {
+      box-shadow: 0 15px 35px rgba(255, 215, 0, 0.4);
+    }
+
+    .achievement-card h4 {
+      color: #003087;
+      font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+      margin-bottom: 0.5rem;
+    }
+
+    body.dark-mode .achievement-card h4 {
+      color: #ffd700;
+    }
+
+    .achievement-card p {
+      color: #555;
+      font-size: clamp(0.875rem, 1.5vw, 1rem);
+    }
+
+    body.dark-mode .achievement-card p {
+      color: #b0b0b0;
+    }
+
+    /* Development Grid */
+    .development-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(clamp(250px, 25vw, 300px), 1fr));
+      gap: clamp(1.5rem, 3vw, 2rem);
+      padding: 0 clamp(15px, 2vw, 20px);
+      margin-bottom: clamp(2rem, 4vw, 3rem);
+    }
+
+    .development-card {
+      background: linear-gradient(135deg, #ffffff, #f0f4f8);
+      padding: clamp(1.5rem, 3vw, 2rem);
+      border-radius: 15px;
+      text-align: center;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      border: 1px solid rgba(0, 48, 135, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .development-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(0, 48, 135, 0.1), rgba(255, 215, 0, 0.1));
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      z-index: -1;
+    }
+
+    .development-card:hover::before {
+      opacity: 1;
+    }
+
+    .development-card:hover {
+      transform: translateY(-10px) scale(1.05);
+      box-shadow: 0 15px 35px rgba(0, 48, 135, 0.3);
+    }
+
+    body.dark-mode .development-card {
+      background: linear-gradient(135deg, #1c2526, #2c3e50);
+      border: 1px solid rgba(255, 215, 0, 0.2);
+    }
+
+    body.dark-mode .development-card:hover {
+      box-shadow: 0 15px 35px rgba(255, 215, 0, 0.4);
+    }
+
+    .development-card h4 {
+      color: #003087;
+      font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+      margin-bottom: 0.5rem;
+    }
+
+    body.dark-mode .development-card h4 {
+      color: #ffd700;
+    }
+
+    .development-card p {
+      color: #555;
+      font-size: clamp(0.875rem, 1.5vw, 1rem);
+      margin-bottom: 0.5rem;
+    }
+
+    body.dark-mode .development-card p {
+      color: #b0b0b0;
+    }
+
+    /* Faculty Testimonials */
+    .faculty-testimonials {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(clamp(250px, 25vw, 300px), 1fr));
+      gap: clamp(1.5rem, 3vw, 2rem);
+      padding: 0 clamp(15px, 2vw, 20px);
+      margin-bottom: clamp(2rem, 4vw, 3rem);
+    }
+
+    .testimonial-card {
+      background: linear-gradient(135deg, #ffffff, #f0f4f8);
+      padding: clamp(1.5rem, 3vw, 2rem);
+      border-radius: 15px;
+      text-align: center;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      border: 1px solid rgba(0, 48, 135, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .testimonial-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(0, 48, 135, 0.1), rgba(255, 215, 0, 0.1));
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      z-index: -1;
+    }
+
+    .testimonial-card:hover::before {
+      opacity: 1;
+    }
+
+    .testimonial-card:hover {
+      transform: translateY(-10px) scale(1.05);
+      box-shadow: 0 15px 35px rgba(0, 48, 135, 0.3);
+    }
+
+    body.dark-mode .testimonial-card {
+      background: linear-gradient(135deg, #1c2526, #2c3e50);
+      border: 1px solid rgba(255, 215, 0, 0.2);
+    }
+
+    body.dark-mode .testimonial-card:hover {
+      box-shadow: 0 15px 35px rgba(255, 215, 0, 0.4);
+    }
+
+    .testimonial-card p {
+      color: #555;
+      font-size: clamp(0.875rem, 1.5vw, 1rem);
+      margin-bottom: 1rem;
+      font-style: italic;
+    }
+
+    body.dark-mode .testimonial-card p {
+      color: #b0b0b0;
+    }
+
+    .testimonial-card span {
+      display: block;
+      color: #003087;
+      font-weight: 500;
+      font-size: clamp(0.875rem, 1.5vw, 1rem);
+    }
+
+    body.dark-mode .testimonial-card span {
+      color: #ffd700;
+    }
+
+    /* Footer */
+    footer {
+      background: linear-gradient(135deg, #003087, #0056b3);
+      color: white;
+      padding: clamp(2.5rem, 5vw, 3.75rem) 0 clamp(1rem, 2vw, 1.25rem);
+    }
+
+    body.dark-mode footer {
+      background: linear-gradient(135deg, #1c2526, #263238);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(clamp(200px, 25vw, 300px), 1fr));
+      gap: clamp(1.5rem, 3vw, 2.5rem);
+      margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+    }
+
+    .footer-column {
+      padding: clamp(1rem, 2vw, 1.5rem);
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+
+    .footer-column:hover {
+      transform: translateY(-5px);
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .footer-column h3 {
+      color: #ffd700;
+      margin-bottom: 1rem;
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      font-weight: 600;
+    }
+
+    .footer-column p {
+      margin: 0.5rem 0;
+      font-size: clamp(0.85rem, 1.5vw, 0.95rem);
+      line-height: 1.5;
+      color: #e0e0e0;
+    }
+
+    .footer-column:first-child p {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .footer-column:first-child p::before {
+      font-family: "Font Awesome 5 Free";
+      font-weight: 900;
+      color: #ffd700;
+    }
+
+    .footer-column:first-child p:nth-child(2)::before {
+      content: "\f3c5";
+    }
+
+    .footer-column:first-child p:nth-child(3)::before {
+      content: "\f095";
+    }
+
+    .footer-column:first-child p:nth-child(4)::before {
+      content: "\f0e0";
+    }
+
+    .footer-column:first-child p:nth-child(5)::before {
+      content: "\f017";
+    }
+
+    .footer-column a {
+      color: #e0e0e0;
+      text-decoration: none;
+      margin: 0.5rem 0;
+      font-size: clamp(0.85rem, 1.5vw, 0.95rem);
+      transition: color 0.3s ease, transform 0.3s ease;
+      display: inline-block;
+    }
+
+    .footer-column a:hover {
+      color: #ffd700;
+      transform: translateX(5px);
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .social-icons a {
+      font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+      color: #e0e0e0;
+      transition: transform 0.3s ease, color 0.3s ease;
+    }
+
+    .social-icons a:hover {
+      transform: scale(1.2);
+      color: #ffd700;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: clamp(0.75rem, 1.5vw, 1.25rem);
+    }
+
+    .footer-bottom p {
+      margin: 0.5rem 0;
+      color: #e0e0e0;
+      font-size: clamp(0.85rem, 1.5vw, 0.95rem);
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .footer-links a {
+      color: #e0e0e0;
+      margin: 0 0.5rem;
+      text-decoration: none;
+      font-size: clamp(0.85rem, 1.5vw, 0.95rem);
+      transition: color 0.3s ease;
+    }
+
+    .footer-links a:hover {
+      color: #ffd700;
+    }
+
+    /* Student Portal Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+      animation: fadeIn 0.5s ease-out forwards;
+    }
+
+    .modal-content {
+      background: white;
+      padding: clamp(1.5rem, 3vw, 2rem);
+      border-radius: 15px;
+      width: 90%;
+      max-width: 400px;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      animation: slideIn 0.5s ease-out forwards;
+    }
+
+    body.dark-mode .modal-content {
+      background: #263238;
+      box-shadow: 0 10px 25px rgba(255, 215, 0, 0.3);
+    }
+
+    .close-modal {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      cursor: pointer;
+      color: #003087;
+      transition: transform 0.3s ease;
+    }
+
+    .close-modal:hover {
+      transform: rotate(90deg);
+    }
+
+    body.dark-mode .close-modal {
+      color: #ffd700;
+    }
+
+    #portal-login {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    /* Circular Input Styling for Modal */
+    #portal-login input {
+      width: 100%;
+      padding: 12px 15px;
+      border: none;
+      border-radius: 50px;
+      font-size: clamp(0.875rem, 1.5vw, 1rem);
+      background: linear-gradient(135deg, #ffffff, #f0f4f8);
+      box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+      color: #333;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+      outline: none;
+      text-align: center;
+    }
+
+    body.dark-mode #portal-login input {
+      background: linear-gradient(135deg, #1c2526, #2c3e50);
+      color: #e0e0e0;
+      box-shadow: inset 0 2px 5px rgba(255, 215, 0, 0.1);
+    }
+
+    #portal-login input:focus {
+      transform: scale(1.05);
+      box-shadow: 0 0 10px rgba(0, 48, 135, 0.5);
+      background: linear-gradient(135deg, #e6f0fa, #ffffff);
+    }
+
+    body.dark-mode #portal-login input:focus {
+      box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+      background: linear-gradient(135deg, #263238, #1c2526);
+    }
+
+    #portal-login input::placeholder {
+      color: #888;
+    }
+
+    body.dark-mode #portal-login input::placeholder {
+      color: #aaa;
+    }
+
+    #portal-login button {
+      background: linear-gradient(135deg, #003087, #0056b3);
+      color: white;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 50px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+
+    #portal-login button:hover {
+      transform: scale(1.05);
+      background: linear-gradient(135deg, #0056b3, #007bff);
+    }
+
+    body.dark-mode #portal-login button {
+      background: linear-gradient(135deg, #ffd700, #ffeb3b);
+      color: #003087;
+    }
+
+    /* Animation Keyframes */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateY(50px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes pulse {
+      0% { transform: translateX(-50%) scaleX(1); }
+      50% { transform: translateX(-50%) scaleX(1.2); }
+      100% { transform: translateX(-50%) scaleX(1); }
+    }
+
+    /* Responsive Design */
+    @media (max-width: 1400px) {
+      nav { padding-left: clamp(60px, 7vw, 80px); padding-right: clamp(45px, 5.5vw, 55px); }
+      nav ul { gap: clamp(0.15rem, 0.5vw, 0.5rem); }
+      nav ul li a { font-size: clamp(0.6rem, 0.9vw, 0.75rem); padding: clamp(2px, 0.4vw, 3px) clamp(4px, 0.8vw, 6px); letter-spacing: 0.2px; }
+      .dark-mode-toggle { font-size: clamp(0.9rem, 1.4vw, 1.1rem); padding: clamp(4px, 0.7vw, 6px); }
+    }
+
+    @media (max-width: 1300px) {
+      nav { padding-left: clamp(55px, 6vw, 70px); padding-right: clamp(40px, 5vw, 50px); }
+      nav ul { gap: clamp(0.1rem, 0.4vw, 0.4rem); }
+      nav ul li a { font-size: clamp(0.55rem, 0.85vw, 0.7rem); padding: clamp(1px, 0.3vw, 2px) clamp(3px, 0.7vw, 5px); letter-spacing: 0.1px; }
+      .dark-mode-toggle { font-size: clamp(0.85rem, 1.3vw, 1rem); padding: clamp(4px, 0.6vw, 5px); }
+    }
+
+    @media (max-width: 1270px) {
+      nav { padding-left: clamp(50px, 5vw, 60px); padding-right: clamp(35px, 4.5vw, 45px); }
+      nav ul { gap: clamp(0.05rem, 0.3vw, 0.3rem); }
+      nav ul li a { font-size: clamp(0.5rem, 0.8vw, 0.65rem); padding: clamp(1px, 0.2vw, 2px) clamp(2px, 0.6vw, 4px); letter-spacing: 0; }
+      .dark-mode-toggle { font-size: clamp(0.8rem, 1.2vw, 0.95rem); padding: clamp(3px, 0.5vw, 4px); }
+    }
+
+    @media (max-width: 1200px) {
+      nav { padding-left: clamp(45px, 4vw, 55px); padding-right: clamp(30px, 4vw, 40px); }
+      nav ul { gap: clamp(0.05rem, 0.2vw, 0.2rem); }
+      nav ul li a { font-size: clamp(0.5rem, 0.75vw, 0.6rem); padding: clamp(1px, 0.2vw, 2px) clamp(2px, 0.5vw, 3px); letter-spacing: 0; }
+      .dark-mode-toggle { font-size: clamp(0.75rem, 1.1vw, 0.9rem); padding: clamp(3px, 0.4vw, 4px); }
+      .faculty-grid, .achievements-grid, .development-grid, .faculty-testimonials { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+      .footer-grid { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+    }
+
+    @media (max-width: 992px) {
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      header .container { height: 70px; }
+      header .logo { left: 10px; }
+      header .logo img { height: 2.75rem; }
+      header .logo span { font-size: 0.875rem; margin-top: 0.2rem; }
+      .dark-mode-toggle { top: 12px; right: 12px; font-size: 1rem; padding: 6px; }
+      .nav-toggle { display: block; right: clamp(45px, 8vw, 50px); font-size: 1.5rem; }
+      nav { padding: 0; }
+      nav ul {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: clamp(200px, 70vw, 250px);
+        height: 100vh;
+        background: #003087;
+        padding: clamp(4rem, 10vw, 5rem) 1rem 1rem;
+        flex-direction: column;
+        gap: 1rem;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+        z-index: 1000;
+        overflow-y: auto;
+      }
+      nav ul.active { display: flex; transform: translateX(0); }
+      nav ul li { margin: 0; }
+      nav ul li a { font-size: 1rem; padding: 10px 20px; width: 100%; text-align: left; border-radius: 0; }
+      body.dark-mode nav ul { background: #1c2526; }
+      body.nav-open::after {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+      }
+      .faculty-grid, .achievements-grid, .development-grid, .faculty-testimonials { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .faculty-search-filter { flex-direction: column; }
+      .search-bar, .faculty-filter { width: 100%; max-width: 100%; }
+    }
+
+    @media (max-width: 480px) {
+      header .container { height: 60px; }
+      header .logo img { height: 2.25rem; }
+      header .logo span { font-size: 0.75rem; margin-top: 0.15rem; }
+      .dark-mode-toggle { top: 10px; right: 10px; font-size: 0.875rem; padding: 5px; }
+      .nav-toggle { right: 40px; font-size: 1.25rem; }
+      nav ul { width: clamp(180px, 70vw, 200px); }
+      .faculty-card, .achievement-card, .development-card, .testimonial-card { padding: 1.25rem; }
+    }
+
+    @media (max-width: 360px) {
+      .dark-mode-toggle { font-size: 0.75rem; padding: 4px; }
+      .nav-toggle { right: 35px; font-size: 1.125rem; }
+      header .logo img { height: 1.75rem; }
+      header .logo span { font-size: 0.65rem; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Dark Mode Toggle -->
+  <div class="dark-mode-toggle">
+    <i class="fas fa-moon"></i>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <div class="logo">
+        <a href="index.html"><img src="winsomite.jpg" alt="Winsome Model Schools Logo" loading="lazy"></a>
+        <span>Winsome</span>
+      </div>
+      <div class="nav-toggle" onclick="toggleNav()"><i class="fas fa-bars"></i></div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="academics.html">Academics</a></li>
+          <li><a href="admissions.html">Admissions</a></li>
+          <li><a href="faculty.html">Faculty & Staff</a></li>
+          <li><a href="facilities.html">Facilities</a></li>
+          <li><a href="student-life.html">Student Life</a></li>
+          <li><a href="news.html">News & Events</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+          <li><a href="#student-portal" onclick="openStudentPortal()">Student Portal</a></li>
+          <li><a href="admin.html">Admin Dashboard</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Faculty Section -->
+  <section id="faculty" class="container">
+    <h2 class="section-title">Faculty & Staff</h2>
+    <div class="faculty-content">
+      <p>Our faculty comprises highly qualified educators dedicated to nurturing the next generation of leaders. With expertise across various disciplines, our team ensures that every student receives personalized guidance and support.</p>
+      <p>We take pride in our award-winning faculty, many of whom have received national recognition for their contributions to education. Explore our directory to learn more about their qualifications, experience, and areas of expertise.</p>
+    </div>
+
+    <!-- Faculty Search and Filter -->
+    <div class="faculty-search-filter">
+      <div class="search-bar">
+        <input type="text" id="faculty-search" placeholder="Search by name or subject..." onkeyup="searchFaculty()">
+        <i class="fas fa-search"></i>
+      </div>
+      <div class="faculty-filter">
+        <label for="faculty-filter">Filter by Department:</label>
+        <select id="faculty-filter" onchange="filterFaculty()">
+          <option value="all">All</option>
+          <option value="science">Science</option>
+          <option value="arts">Arts & Humanities</option>
+          <option value="vocational">Vocational</option>
+          <option value="admin">Administration</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Faculty Grid -->
+    <div class="faculty-grid" id="faculty-grid">
+      <div class="faculty-card" data-category="science" data-name="Mr. Alex Brown">
+        <img src="winsome.png" alt="Mr. Alex Brown" loading="lazy">
+        <h4>Mr. Alex Brown</h4>
+        <p>Mathematics Teacher<br>M.Sc. in Mathematics</p>
+        <p>Experience: 15 years</p>
+        <p>Specialization: Calculus, Algebra</p>
+        <a href="mailto:alex.brown@winsomemodelschools.org" class="contact-link">Contact</a>
+      </div>
+      <div class="faculty-card" data-category="science" data-name="Mrs. Sarah Adeyemi">
+        <img src="winsome.png" alt="Mrs. Sarah Adeyemi" loading="lazy">
+        <h4>Mrs. Sarah Adeyemi</h4>
+        <p>Science Coordinator<br>Ph.D. in Chemistry</p>
+        <p>Experience: 20 years</p>
+        <p>Specialization: Organic Chemistry, Lab Techniques</p>
+        <a href="mailto:sarah.adeyemi@winsomemodelschools.org" class="contact-link">Contact</a>
+      </div>
+      <div class="faculty-card" data-category="science" data-name="Mr. Peter Okafor">
+        <img src="winsome.png" alt="Mr. Peter Okafor" loading="lazy">
+        <h4>Mr. Peter Okafor</h4>
+        <p>Physics Teacher<br>M.Sc. in Physics</p>
+        <p>Experience: 12 years</p>
+        <p>Specialization: Mechanics, Electromagnetism</p>
+        <a href="mailto:peter.okafor@winsomemodelschools.org" class="contact-link">Contact</a>
+      </div>
+      <div class="faculty-card" data-category="arts" data-name="Mrs. Emily Green">
+        <img src="winsome.png" alt="Mrs. Emily Green" loading="lazy">
+        <h4>Mrs. Emily Green</h4>
+        <p>Literature Teacher<br>B.A. in English</p>
+        <p>Experience: 10 years</p>
+        <p>Specialization: Shakespeare, African Literature</p>
+        <a href="mailto:emily.green@winsomemodelschools.org" class="contact-link">Contact</a>
+      </div>
+      <div class="faculty-card" data-category="arts" data-name="Mr. Samuel Adewale">
+        <img src="winsome.png" alt="Mr. Samuel Adewale" loading="lazy">
+        <h4>Mr. Samuel Adewale</h4>
+        <p>History Teacher<br>M.A. in History</p>
+        <p>Experience: 8 years</p>
+        <p>Specialization: Nigerian History, World Wars</p>
+        <a href="mailto:samuel.adewale@winsomemodelschools.org" class="contact-link">Contact</a>
+      </div>
+      <div class="faculty-card" data-category="arts" data-name="Mrs. Grace Ojo">
+        <img src="winsome.png" alt="Mrs. Grace Ojo" loading="lazy">
+        <h4>Mrs. Grace Ojo</h4>
+        <p>Government Teacher<br>B.Sc. in Political Science</p>
+        <p>Experience: 7 years</p>
+        <p>Specialization: Democracy, International Relations</p>
+        <a href="mailto:grace.ojo@winsomemodelschools.org" class="contact-link">Contact</a>
+      </div>
+      <div class="faculty-card" data-category="vocational" data-name="Mr. Daniel Eze">
+        <img src="winsome.png" alt="Mr. Daniel Eze" loading="lazy">
+        <h4>Mr. Daniel Eze</h4>
+        <p>ICT Instructor<br>B.Tech in Computer Science</p>
+        <p>Experience: 5 years</p>
+        <p>Specialization: Web Development, Cybersecurity</p>
+        <a href="mailto:daniel.eze@winsomemodelschools.org" class="contact-link">Contact</a>
+      </div>
+      <div class="faculty-card" data-category="vocational" data-name="Mrs. Funke Alabi">
+        <img src="winsome.png" alt="Mrs. Funke Alabi" loading="lazy">
+        <h4>Mrs. Funke Alabi</h4>
+        <p>Home Economics Teacher<br>B.Sc. in Home Economics</p>
+        <p>Experience: 9 years</p>
+        <p>Specialization: Nutrition, Textile Design</p>
+        <a href="mailto:funke.alabi@winsomemodelschools.org" class="contact-link">Contact</a>
+      </div>
+      <div class="faculty-card" data-category="admin" data-name="Dr. John Adebayo">
+        <img src="winsome.png" alt="Dr. John Adebayo" loading="lazy">
+        <h4>Dr. John Adebayo</h4>
+        <p>Principal<br>Ph.D. in Educational Leadership</p>
+        <p>Experience: 25 years</p>
+        <p>Specialization: School Administration, Curriculum Design</p>
+        <a href="mailto:john.adebayo@winsomemodelschools.org" class="contact-link">Contact</a>
+      </div>
+      <div class="faculty-card" data-category="admin" data-name="Mrs. Jane Okonkwo">
+        <img src="winsome.png" alt="Mrs. Jane Okonkwo" loading="lazy">
+        <h4>Mrs. Jane Okonkwo</h4>
+        <p>Vice Principal<br>M.Ed. in Curriculum Development</p>
+        <p>Experience: 20 years</p>
+        <p>Specialization: Teacher Training, Student Assessment</p>
+        <a href="mailto:jane.okonkwo@winsomemodelschools.org" class="contact-link">Contact</a>
+      </div>
+    </div>
+
+    <!-- Faculty Achievements -->
+    <h3 class="section-title">Faculty Achievements</h3>
+    <div class="achievements-grid">
+      <div class="achievement-card">
+        <h4>National Teacher of the Year</h4>
+        <p>Dr. Sarah Adeyemi received the 2023 National Teacher of the Year award for her contributions to science education.</p>
+      </div>
+      <div class="achievement-card">
+        <h4>Published Research</h4>
+        <p>Mr. Alex Brown published a groundbreaking paper on advanced calculus techniques in the International Journal of Mathematics Education.</p>
+      </div>
+      <div class="achievement-card">
+        <h4>Innovative Teaching Award</h4>
+        <p>Mrs. Emily Green was honored with the 2024 Innovative Teaching Award for her creative approach to teaching literature.</p>
+      </div>
+      <div class="achievement-card">
+        <h4>Community Impact Award</h4>
+        <p>Mr. Daniel Eze led a community coding bootcamp, earning the 2025 Community Impact Award for promoting digital literacy.</p>
+      </div>
+    </div>
+
+    <!-- Faculty Development Programs -->
+    <h3 class="section-title">Faculty Development Programs</h3>
+    <div class="development-grid">
+      <div class="development-card">
+        <h4>Annual Training Workshops</h4>
+        <p>We conduct yearly workshops on modern teaching methodologies, technology integration, and student engagement strategies.</p>
+        <p>Recent Topics: AI in Education, Inclusive Teaching, Gamification</p>
+      </div>
+      <div class="development-card">
+        <h4>International Exchange Programs</h4>
+        <p>Our faculty participate in exchange programs with schools in the UK and USA to learn global best practices.</p>
+        <p>Recent Destinations: London, Boston</p>
+      </div>
+      <div class="development-card">
+        <h4>Research Grants</h4>
+        <p>We provide grants for faculty to conduct research in education, science, and technology.</p>
+        <p>Recent Projects: STEM Education, Digital Learning Tools</p>
+      </div>
+    </div>
+
+    <!-- Faculty Testimonials -->
+    <h3 class="section-title">What Our Faculty Say</h3>
+    <div class="faculty-testimonials">
+      <div class="testimonial-card">
+        <p>"Teaching at Winsome has been a rewarding experience. The support for professional growth is unparalleled."</p>
+        <span>– Mrs. Sarah Adeyemi, Science Coordinator</span>
+      </div>
+      <div class="testimonial-card">
+        <p>"I love the collaborative environment here. It’s a place where both teachers and students thrive."</p>
+        <span>– Mr. Alex Brown, Mathematics Teacher</span>
+      </div>
+      <div class="testimonial-card">
+        <p>"Winsome encourages innovation, allowing me to experiment with new teaching methods."</p>
+        <span>– Mrs. Emily Green, Literature Teacher</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-column">
+          <h3>Winsome Model Schools</h3>
+          <p>Araromi Street, Ifako-Jaiye, Ojooromo, Lagos, Nigeria</p>
+          <p>Phone: +234 803 231 9017</p>
+          <p>Email: info@winsomemodelschools.org</p>
+          <p>Hours: Mon-Fri 8am-6pm, Sat 9am-2pm</p>
+        </div>
+        <div class="footer-column">
+          <h3>Quick Links</h3>
+          <a href="about.html">About Us</a>
+          <a href="academics.html">Academics</a>
+          <a href="admissions.html">Admissions</a>
+          <a href="faculty.html">Faculty & Staff</a>
+          <a href="facilities.html">Facilities</a>
+          <a href="student-life.html">Student Life</a>
+          <a href="news.html">News & Events</a>
+          <a href="contact.html">Contact Us</a>
+          <a href="admin.html">Admin Dashboard</a>
+        </div>
+        <div class="footer-column">
+          <h3>Explore More</h3>
+          <a href="news.html#calendar">Event Calendar</a>
+          <a href="facilities.html#virtual-tour">Virtual Tour</a>
+          <a href="student-life.html#gallery">Student Gallery</a>
+          <a href="contact.html#newsletter">Newsletter Signup</a>
+        </div>
+        <div class="footer-column">
+          <h3>Follow Us</h3>
+          <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook-f animate-icon"></i></a>
+            <a href="#"><i class="fab fa-twitter animate-icon"></i></a>
+            <a href="#"><i class="fab fa-instagram animate-icon"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in animate-icon"></i></a>
+            <a href="#"><i class="fab fa-youtube animate-icon"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 Winsome Model Schools. All Rights Reserved.</p>
+        <div class="footer-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">FAQs</a>
+          <a href="#">Accessibility</a>
+          <a href="#">Sitemap</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Student Portal Modal -->
+  <div id="student-portal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal" onclick="closeStudentPortal()">×</span>
+      <h3>Student Portal Login</h3>
+      <form id="portal-login" onsubmit="handlePortalLogin(event)">
+        <input type="text" name="username" placeholder="Username" required>
+        <input type="password" name="password" placeholder="Password" required>
+        <button type="submit">Login</button>
+      </form>
+      <p id="portal-message"></p>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollTrigger.min.js"></script>
+  <script>
+    // Dark Mode Toggle
+    document.querySelector('.dark-mode-toggle').addEventListener('click', () => {
+      const body = document.body;
+      const icon = document.querySelector('.dark-mode-toggle i');
+      body.classList.toggle('dark-mode');
+      icon.classList.toggle('fa-moon');
+      icon.classList.toggle('fa-sun');
+    });
+
+    // Navigation Toggle for Mobile
+    window.toggleNav = function () {
+      const nav = document.querySelector('nav ul');
+      nav.classList.toggle('active');
+      document.body.classList.toggle('nav-open');
+    };
+
+    // Close Mobile Nav When Clicking Outside
+    document.addEventListener('click', (e) => {
+      const nav = document.querySelector('nav ul');
+      const navToggle = document.querySelector('.nav-toggle');
+      if (!nav.contains(e.target) && !navToggle.contains(e.target) && nav.classList.contains('active')) {
+        nav.classList.remove('active');
+        document.body.classList.remove('nav-open');
+      }
+    });
+
+    // Header Scroll Effect
+    window.addEventListener('scroll', () => {
+      const header = document.querySelector('header');
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+
+    // Faculty Search Function
+    window.searchFaculty = function () {
+      const searchTerm = document.getElementById('faculty-search').value.toLowerCase();
+      const facultyCards = document.querySelectorAll('.faculty-card');
+      facultyCards.forEach(card => {
+        const name = card.getAttribute('data-name').toLowerCase();
+        if (name.includes(searchTerm)) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    };
+
+    // Faculty Filter Function
+    window.filterFaculty = function () {
+      const filterValue = document.getElementById('faculty-filter').value;
+      const facultyCards = document.querySelectorAll('.faculty-card');
+      facultyCards.forEach(card => {
+        const category = card.getAttribute('data-category');
+        if (filterValue === 'all' || category === filterValue) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    };
+
+    // Student Portal Modal Functions
+    window.openStudentPortal = function (event) {
+      event.preventDefault();
+      const modal = document.getElementById('student-portal');
+      if (modal) {
+        modal.style.display = 'flex';
+        console.log('Student Portal modal opened');
+      } else {
+        console.error('Student Portal modal not found in the DOM');
+      }
+    };
+
+    window.closeStudentPortal = function () {
+      const modal = document.getElementById('student-portal');
+      if (modal) {
+        modal.style.display = 'none';
+        console.log('Student Portal modal closed');
+      } else {
+        console.error('Student Portal modal not found in the DOM');
+      }
+    };
+
+    window.handlePortalLogin = function (event) {
+      event.preventDefault();
+      const message = document.getElementById('portal-message');
+      if (message) {
+        message.textContent = 'Login functionality coming soon!';
+        message.style.color = document.body.classList.contains('dark-mode') ? '#ffeb3b' : '#003087';
+      } else {
+        console.error('Portal message element not found');
+      }
+    };
+
+    // Debugging: Check if the Student Portal link is working
+    document.addEventListener('DOMContentLoaded', () => {
+      const studentPortalLink = document.querySelector('nav ul li a[href="#student-portal"]');
+      if (studentPortalLink) {
+        studentPortalLink.addEventListener('click', openStudentPortal);
+        console.log('Student Portal link event listener added');
+      } else {
+        console.error('Student Portal link not found in the navigation');
+      }
+    });
+
+    // GSAP Animations for Cards
+    gsap.utils.toArray('.faculty-card, .achievement-card, .development-card, .testimonial-card').forEach(card => {
+      gsap.from(card, {
+        scrollTrigger: {
+          trigger: card,
+          start: 'top 80%',
+          end: 'top 50%',
+          scrub: 1,
+        },
+        opacity: 0,
+        y: 50,
+        duration: 1,
+      });
+    });
+  </script>
+</body>
+</html>

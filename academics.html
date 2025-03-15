@@ -1,0 +1,1631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Explore the academic programs at Winsome Model Schools, a premier WAEC & NECO institution in Ifako, Lagos, Nigeria, offering excellence in Science, Arts, and Vocational streams.">
+  <meta name="theme-color" content="#003087">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="assets/icons/icon-192x192.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <title>Academics - Winsome Model Schools</title>
+  <style>
+    /* Reset and Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #f9f9f9;
+      color: #333;
+      line-height: 1.8;
+      overflow-x: hidden;
+      transition: background 0.5s ease, color 0.5s ease;
+    }
+
+    body.dark-mode {
+      background: #1c2526; /* Darker blue-gray for dark mode */
+      color: #e0e0e0;
+    }
+
+    /* Dark Mode Toggle - Refined Design */
+    .dark-mode-toggle {
+      position: fixed;
+      top: 15px;
+      right: 15px;
+      font-size: clamp(1rem, 1.5vw, 1.2rem); /* Slightly reduced font size for better fit */
+      cursor: pointer;
+      color: #fff;
+      background: #003087;
+      padding: clamp(5px, 0.8vw, 7px); /* Slightly reduced padding */
+      border-radius: 8px;
+      z-index: 1001;
+      transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .dark-mode-toggle:hover {
+      transform: scale(1.05);
+      background: #0056b3;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    body.dark-mode .dark-mode-toggle {
+      background: #ffd700;
+      color: #003087;
+      box-shadow: 0 2px 8px rgba(255, 215, 0, 0.3);
+    }
+
+    body.dark-mode .dark-mode-toggle:hover {
+      background: #ffeb3b;
+      box-shadow: 0 4px 12px rgba(255, 215, 0, 0.4);
+    }
+
+    /* Utility Classes */
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 clamp(15px, 2vw, 20px);
+      width: 100%;
+    }
+
+    .btn {
+      display: inline-block;
+      background: linear-gradient(135deg, #003087, #0056b3);
+      color: white;
+      padding: clamp(10px, 2vw, 14px) clamp(20px, 3vw, 30px);
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: clamp(0.875rem, 2vw, 1.125rem);
+      text-decoration: none;
+      transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 5px 15px rgba(0, 48, 135, 0.3);
+    }
+
+    .btn:hover {
+      transform: translateY(-5px) scale(1.05);
+      background: linear-gradient(135deg, #0056b3, #007bff);
+      box-shadow: 0 10px 25px rgba(0, 48, 135, 0.6);
+    }
+
+    body.dark-mode .btn {
+      background: linear-gradient(135deg, #ffd700, #ffeb3b);
+      color: #003087;
+      box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+    }
+
+    body.dark-mode .btn:hover {
+      background: linear-gradient(135deg, #ffeb3b, #fff59d);
+      box-shadow: 0 10px 25px rgba(255, 215, 0, 0.7);
+    }
+
+    .section-title {
+      color: #003087;
+      font-size: clamp(2rem, 5vw, 2.75rem);
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: clamp(2rem, 4vw, 3rem);
+      position: relative;
+      text-transform: uppercase;
+    }
+
+    body.dark-mode .section-title {
+      color: #ffd700;
+    }
+
+    .section-title::after {
+      content: '';
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(to right, #ffd700, #ffeb3b);
+      position: absolute;
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      animation: pulse 2s infinite ease-in-out;
+    }
+
+    body.dark-mode .section-title::after {
+      background: linear-gradient(to right, #ffd700, #ffeb3b);
+    }
+
+    /* Redesigned Header */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: linear-gradient(135deg, #003087, #0056b3);
+      color: white;
+      padding: 0;
+      z-index: 1000;
+      transition: background 0.4s ease, box-shadow 0.4s ease;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      border-bottom: 2px solid rgba(255, 215, 0, 0.2);
+    }
+
+    header.scrolled {
+      background: linear-gradient(135deg, #002570, #0044a0);
+      box-shadow: 0 6px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    body.dark-mode header {
+      background: linear-gradient(135deg, #1c2526, #2c3e50);
+      border-bottom: 2px solid rgba(255, 215, 0, 0.2);
+    }
+
+    body.dark-mode header.scrolled {
+      background: linear-gradient(135deg, #162022, #263238);
+      box-shadow: 0 6px 25px rgba(255, 215, 0, 0.3);
+    }
+
+    header .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 clamp(15px, 2vw, 20px);
+      height: clamp(70px, 10vw, 90px);
+    }
+
+    header .logo {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: absolute;
+      left: clamp(10px, 2vw, 20px);
+    }
+
+    header .logo img {
+      height: clamp(2.5rem, 5vw, 3.5rem);
+      transition: transform 0.3s ease;
+    }
+
+    header .logo img:hover {
+      transform: scale(1.05);
+    }
+
+    header .logo span {
+      font-size: clamp(0.75rem, 1.5vw, 1rem);
+      font-weight: 600;
+      color: #ffd700;
+      margin-top: 0.25rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    body.dark-mode header .logo span {
+      color: #ffeb3b;
+    }
+
+    nav {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      flex-grow: 1;
+      padding-left: clamp(70px, 8vw, 90px); /* Adjusted to provide space for logo */
+      padding-right: clamp(50px, 6vw, 60px); /* Increased to prevent overlap with dark mode toggle */
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      align-items: center;
+      gap: clamp(0.2rem, 0.6vw, 0.6rem); /* Further reduced gap to fit all links */
+      margin: 0;
+      flex-wrap: nowrap; /* Ensure links stay on a single line */
+    }
+
+    nav ul li {
+      display: flex;
+      align-items: center;
+    }
+
+    nav ul li a {
+      color: white;
+      font-size: clamp(0.65rem, 1vw, 0.8rem); /* Further reduced font size to fit all links */
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.3px; /* Further reduced letter spacing for compactness */
+      padding: clamp(2px, 0.5vw, 4px) clamp(5px, 1vw, 8px); /* Further reduced padding to fit all links */
+      border-radius: 25px;
+      transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
+      position: relative;
+      text-decoration: none;
+      line-height: 1;
+      white-space: nowrap; /* Prevent text wrapping */
+    }
+
+    nav ul li a:hover {
+      color: #ffd700;
+      background: rgba(255, 255, 255, 0.15);
+      transform: translateY(-2px);
+    }
+
+    body.dark-mode nav ul li a {
+      color: #e0e0e0;
+    }
+
+    body.dark-mode nav ul li a:hover {
+      color: #ffd700;
+      background: rgba(255, 215, 0, 0.15);
+    }
+
+    nav ul li a::after {
+      content: '';
+      position: absolute;
+      bottom: 4px;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background: #ffd700;
+      transition: width 0.3s ease, left 0.3s ease;
+    }
+
+    nav ul li a:hover::after {
+      width: 50%;
+      left: 25%;
+    }
+
+    body.dark-mode nav ul li a::after {
+      background: #ffd700;
+    }
+
+    .nav-toggle {
+      display: none;
+      font-size: clamp(1.25rem, 3vw, 1.75rem);
+      cursor: pointer;
+      color: white;
+      transition: transform 0.3s ease;
+      z-index: 1002;
+      position: absolute;
+      right: clamp(60px, 10vw, 80px);
+    }
+
+    .nav-toggle:hover {
+      transform: rotate(90deg);
+    }
+
+    /* Academics Hero */
+    #academics {
+      position: relative;
+      width: 100%;
+      padding: 0;
+      margin-top: clamp(70px, 10vw, 90px);
+    }
+
+    .academics-hero {
+      position: relative;
+      width: 100%;
+      height: 100vh; /* Fullscreen height */
+      background: url('winsome.png') center/cover no-repeat;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: white;
+      z-index: 1;
+      margin: 0; /* Ensure no margins */
+      padding: 0; /* Ensure no padding */
+    }
+
+    /* Override container constraints for academics-hero */
+    #academics.container {
+      max-width: none; /* Remove max-width constraint */
+      padding: 0; /* Remove padding */
+      margin: 0; /* Remove margin */
+    }
+
+    .academics-hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 48, 135, 0.6));
+      z-index: 1;
+    }
+
+    body.dark-mode .academics-hero::before {
+      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(255, 215, 0, 0.3));
+    }
+
+    .academics-hero h1 {
+      position: relative;
+      z-index: 2;
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 800;
+      text-shadow: 3px 3px 15px rgba(0, 0, 0, 0.8);
+      animation: fadeInDown 1s ease-out forwards;
+    }
+
+    body.dark-mode .academics-hero h1 {
+      color: #ffeb3b;
+      text-shadow: 3px 3px 15px rgba(0, 0, 0, 0.9);
+    }
+
+    /* Academics Content */
+    .academics-content {
+      position: relative;
+      width: 100%;
+      padding: clamp(2rem, 5vw, 3rem) clamp(15px, 2vw, 20px);
+      text-align: center;
+      font-size: clamp(1rem, 1.5vw, 1.125rem);
+      color: #555;
+      z-index: 2;
+      background: #fff;
+      border-radius: 15px;
+      margin: 2rem auto;
+      max-width: 1200px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+      animation: slideIn 1s ease-out forwards;
+    }
+
+    body.dark-mode .academics-content {
+      color: #b0b0b0;
+      background: #263238;
+      box-shadow: 0 5px 20px rgba(255, 215, 0, 0.2);
+    }
+
+    .academics-content p {
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 1s ease-out forwards 0.2s;
+    }
+
+    .academics-content p:nth-child(2) {
+      animation-delay: 0.4s;
+    }
+
+    /* Curriculum Filter */
+    .curriculum-filter {
+      padding: clamp(1.5rem, 3vw, 2rem) clamp(15px, 2vw, 20px);
+      text-align: center;
+      background: linear-gradient(135deg, #f0f4f8, #ffffff);
+      border-radius: 15px;
+      margin: 0 auto 2rem;
+      max-width: 1200px;
+      box-shadow: 0 5px 15px rgba(0, 48, 135, 0.1);
+    }
+
+    body.dark-mode .curriculum-filter {
+      background: linear-gradient(135deg, #1c2526, #2c3e50);
+      box-shadow: 0 5px 15px rgba(255, 215, 0, 0.2);
+    }
+
+    .curriculum-filter h3 {
+      color: #003087;
+      font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+      margin-bottom: 1rem;
+    }
+
+    body.dark-mode .curriculum-filter h3 {
+      color: #ffd700;
+    }
+
+    #curriculum-filter {
+      padding: 10px 20px;
+      font-size: clamp(0.875rem, 1.5vw, 1rem);
+      border: 2px solid #003087;
+      border-radius: 25px;
+      background: #fff;
+      cursor: pointer;
+      transition: border-color 0.3s ease, transform 0.3s ease;
+    }
+
+    #curriculum-filter:hover {
+      border-color: #ffd700;
+      transform: scale(1.05);
+    }
+
+    body.dark-mode #curriculum-filter {
+      border-color: #ffd700;
+      background: #1c2526;
+      color: #e0e0e0;
+    }
+
+    body.dark-mode #curriculum-filter:hover {
+      border-color: #ffeb3b;
+    }
+
+    /* Curriculum Grid */
+    .academics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(clamp(250px, 25vw, 300px), 1fr));
+      gap: clamp(1.5rem, 3vw, 2rem);
+      padding: 0 clamp(15px, 2vw, 20px);
+      margin-bottom: clamp(2rem, 4vw, 3rem);
+    }
+
+    .academics-card {
+      background: linear-gradient(135deg, #ffffff, #f0f4f8);
+      padding: clamp(1.5rem, 3vw, 2rem);
+      border-radius: 15px;
+      text-align: center;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      border: 1px solid rgba(0, 48, 135, 0.1);
+      position: relative;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 1s ease-out forwards;
+    }
+
+    .academics-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(0, 48, 135, 0.1), rgba(255, 215, 0, 0.1));
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      z-index: -1;
+    }
+
+    .academics-card:hover::before {
+      opacity: 1;
+    }
+
+    .academics-card:hover {
+      transform: translateY(-10px) scale(1.05);
+      box-shadow: 0 15px 35px rgba(0, 48, 135, 0.3);
+    }
+
+    body.dark-mode .academics-card {
+      background: linear-gradient(135deg, #1c2526, #2c3e50);
+      border: 1px solid rgba(255, 215, 0, 0.2);
+    }
+
+    body.dark-mode .academics-card:hover {
+      box-shadow: 0 15px 35px rgba(255, 215, 0, 0.4);
+    }
+
+    .academics-card h3 {
+      color: #003087;
+      font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+    }
+
+    body.dark-mode .academics-card h3 {
+      color: #ffd700;
+    }
+
+    .academics-card p {
+      color: #555;
+      font-size: clamp(0.875rem, 1.5vw, 1rem);
+      margin-bottom: 1rem;
+    }
+
+    .academics-card ul {
+      list-style: none;
+      text-align: left;
+      margin: 1rem 0;
+      padding-left: 1rem;
+    }
+
+    .academics-card ul li {
+      position: relative;
+      color: #666;
+      margin-bottom: 0.5rem;
+      padding-left: 1.5rem;
+    }
+
+    .academics-card ul li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: #ffd700;
+      font-weight: bold;
+    }
+
+    body.dark-mode .academics-card p,
+    body.dark-mode .academics-card ul li {
+      color: #b0b0b0;
+    }
+
+    .download-syllabus {
+      display: inline-block;
+      color: #0056b3;
+      font-size: clamp(0.875rem, 1.5vw, 1rem);
+      text-decoration: underline;
+      transition: color 0.3s ease;
+    }
+
+    .download-syllabus:hover {
+      color: #ffd700;
+    }
+
+    body.dark-mode .download-syllabus {
+      color: #ffd700;
+    }
+
+    body.dark-mode .download-syllabus:hover {
+      color: #ffeb3b;
+    }
+
+    /* Academic Schedule */
+    .schedule-tabs {
+      padding: clamp(1.5rem, 3vw, 2rem) clamp(15px, 2vw, 20px);
+      margin-bottom: clamp(2rem, 4vw, 3rem);
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .tab-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .tab-btn {
+      padding: 10px 20px;
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      background: #003087;
+      color: white;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.3s ease;
+    }
+
+    .tab-btn.active,
+    .tab-btn:hover {
+      background: #ffd700;
+      color: #003087;
+      transform: scale(1.05);
+    }
+
+    body.dark-mode .tab-btn {
+      background: #263238;
+      color: #e0e0e0;
+    }
+
+    body.dark-mode .tab-btn.active,
+    body.dark-mode .tab-btn:hover {
+      background: #ffd700;
+      color: #003087;
+    }
+
+    .tab-content {
+      display: none;
+      background: #fff;
+      padding: 1.5rem;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0, 48, 135, 0.1);
+    }
+
+    .tab-content.active {
+      display: block;
+      animation: fadeIn 0.5s ease-out forwards;
+    }
+
+    body.dark-mode .tab-content {
+      background: #263238;
+      box-shadow: 0 5px 15px rgba(255, 215, 0, 0.2);
+    }
+
+    /* Timetable Responsiveness Fix */
+    .schedule-table-wrapper {
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+      border-radius: 15px;
+      margin-top: 1rem;
+    }
+
+    .schedule-table {
+      width: 100%;
+      min-width: 600px; /* Ensures the table has a minimum width to prevent squashing */
+      border-collapse: collapse;
+    }
+
+    .schedule-table th,
+    .schedule-table td {
+      padding: clamp(8px, 1vw, 12px);
+      text-align: center;
+      border: 1px solid #ddd;
+      font-size: clamp(0.75rem, 1.5vw, 0.875rem);
+    }
+
+    .schedule-table th {
+      background: #003087;
+      color: white;
+      font-weight: 600;
+      position: sticky;
+      top: 0;
+      z-index: 1;
+    }
+
+    body.dark-mode .schedule-table th {
+      background: #2c3e50;
+      color: #ffd700;
+    }
+
+    .schedule-table td {
+      background: #f9f9f9;
+      color: #333;
+    }
+
+    body.dark-mode .schedule-table td {
+      background: #1c2526;
+      color: #b0b0b0;
+      border-color: #444;
+    }
+
+    /* Academic Resources */
+    .resources-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(clamp(250px, 25vw, 300px), 1fr));
+      gap: clamp(1.5rem, 3vw, 2rem);
+      padding: 0 clamp(15px, 2vw, 20px);
+      margin-bottom: clamp(2rem, 4vw, 3rem);
+    }
+
+    .resource-card {
+      background: linear-gradient(135deg, #ffffff, #f0f4f8);
+      padding: clamp(1.5rem, 3vw, 2rem);
+      border-radius: 15px;
+      text-align: center;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      border: 1px solid rgba(0, 48, 135, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .resource-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(0, 48, 135, 0.1), rgba(255, 215, 0, 0.1));
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      z-index: -1;
+    }
+
+    .resource-card:hover::before {
+      opacity: 1;
+    }
+
+    .resource-card:hover {
+      transform: translateY(-10px) scale(1.05);
+      box-shadow: 0 15px 35px rgba(0, 48, 135, 0.3);
+    }
+
+    body.dark-mode .resource-card {
+      background: linear-gradient(135deg, #1c2526, #2c3e50);
+      border: 1px solid rgba(255, 215, 0, 0.2);
+    }
+
+    body.dark-mode .resource-card:hover {
+      box-shadow: 0 15px 35px rgba(255, 215, 0, 0.4);
+    }
+
+    .resource-card h4 {
+      color: #003087;
+      font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+      margin-bottom: 1rem;
+    }
+
+    body.dark-mode .resource-card h4 {
+      color: #ffd700;
+    }
+
+    .resource-card p {
+      color: #555;
+      font-size: clamp(0.875rem, 1.5vw, 1rem);
+      margin-bottom: 1.5rem;
+    }
+
+    body.dark-mode .resource-card p {
+      color: #b0b0b0;
+    }
+
+    /* Footer Styling */
+    footer {
+      background: linear-gradient(135deg, #003087, #0056b3);
+      color: white;
+      padding: clamp(2.5rem, 5vw, 3.75rem) 0 clamp(1rem, 2vw, 1.25rem);
+    }
+
+    body.dark-mode footer {
+      background: linear-gradient(135deg, #1c2526, #263238);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(clamp(200px, 25vw, 300px), 1fr));
+      gap: clamp(1.5rem, 3vw, 2.5rem);
+      margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+    }
+
+    .footer-column {
+      padding: clamp(1rem, 2vw, 1.5rem);
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+
+    .footer-column:hover {
+      transform: translateY(-5px);
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .footer-column h3 {
+      color: #ffd700;
+      margin-bottom: 1rem;
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      font-weight: 600;
+    }
+
+    .footer-column p {
+      margin: 0.5rem 0;
+      font-size: clamp(0.85rem, 1.5vw, 0.95rem);
+      line-height: 1.5;
+      color: #e0e0e0;
+    }
+
+    .footer-column:first-child p {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .footer-column:first-child p::before {
+      font-family: "Font Awesome 5 Free";
+      font-weight: 900;
+      color: #ffd700;
+    }
+
+    .footer-column:first-child p:nth-child(2)::before {
+      content: "\f3c5";
+    }
+
+    .footer-column:first-child p:nth-child(3)::before {
+      content: "\f095";
+    }
+
+    .footer-column:first-child p:nth-child(4)::before {
+      content: "\f0e0";
+    }
+
+    .footer-column:first-child p:nth-child(5)::before {
+      content: "\f017";
+    }
+
+    .footer-column:nth-child(2),
+    .footer-column:nth-child(3) {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .footer-column a {
+      color: #e0e0e0;
+      text-decoration: none;
+      margin: 0.5rem 0;
+      font-size: clamp(0.85rem, 1.5vw, 0.95rem);
+      transition: color 0.3s ease, transform 0.3s ease;
+      display: inline-block;
+    }
+
+    .footer-column a:hover {
+      color: #ffd700;
+      transform: translateX(5px);
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .social-icons a {
+      font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+      color: #e0e0e0;
+      transition: transform 0.3s ease, color 0.3s ease;
+    }
+
+    .social-icons a:hover {
+      transform: scale(1.2);
+      color: #ffd700;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: clamp(0.75rem, 1.5vw, 1.25rem);
+    }
+
+    .footer-bottom p {
+      margin: 0.5rem 0;
+      color: #e0e0e0;
+      font-size: clamp(0.85rem, 1.5vw, 0.95rem);
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .footer-links a {
+      color: #e0e0e0;
+      margin: 0 0.5rem;
+      text-decoration: none;
+      font-size: clamp(0.85rem, 1.5vw, 0.95rem);
+      transition: color 0.3s ease;
+    }
+
+    .footer-links a:hover {
+      color: #ffd700;
+    }
+
+    /* Student Portal Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+      animation: fadeIn 0.5s ease-out forwards;
+    }
+
+    .modal-content {
+      background: white;
+      padding: clamp(1.5rem, 3vw, 2rem);
+      border-radius: 15px;
+      width: 90%;
+      max-width: 400px;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      animation: slideIn 0.5s ease-out forwards;
+    }
+
+    body.dark-mode .modal-content {
+      background: #263238;
+      box-shadow: 0 10px 25px rgba(255, 215, 0, 0.3);
+    }
+
+    .close-modal {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      cursor: pointer;
+      color: #003087;
+      transition: transform 0.3s ease;
+    }
+
+    .close-modal:hover {
+      transform: rotate(90deg);
+    }
+
+    body.dark-mode .close-modal {
+      color: #ffd700;
+    }
+
+    #portal-login {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    #portal-login input {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: clamp(0.875rem, 1.5vw, 1rem);
+      transition: border-color 0.3s ease;
+    }
+
+    #portal-login input:focus {
+      border-color: #003087;
+      outline: none;
+    }
+
+    body.dark-mode #portal-login input {
+      background: #1c2526;
+      color: #e0e0e0;
+      border-color: #666;
+    }
+
+    body.dark-mode #portal-login input:focus {
+      border-color: #ffd700;
+    }
+
+    #portal-login button {
+      background: linear-gradient(135deg, #003087, #0056b3);
+      color: white;
+      padding: 12px;
+      border: none;
+      border-radius: 50px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+
+    #portal-login button:hover {
+      transform: scale(1.05);
+      background: linear-gradient(135deg, #0056b3, #007bff);
+    }
+
+    body.dark-mode #portal-login button {
+      background: linear-gradient(135deg, #ffd700, #ffeb3b);
+      color: #003087;
+    }
+
+    body.dark-mode #portal-login button:hover {
+      background: linear-gradient(135deg, #ffeb3b, #fff59d);
+    }
+
+    #portal-message {
+      margin-top: 1rem;
+      font-size: clamp(0.85rem, 1.5vw, 0.9rem);
+      color: #003087;
+    }
+
+    body.dark-mode #portal-message {
+      color: #ffd700;
+    }
+
+    /* Animation Keyframes */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateY(50px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+      40% { transform: translateY(-10px); }
+      60% { transform: translateY(-5px); }
+    }
+
+    @keyframes pulse {
+      0% { transform: translateX(-50%) scaleX(1); }
+      50% { transform: translateX(-50%) scaleX(1.2); }
+      100% { transform: translateX(-50%) scaleX(1); }
+    }
+
+    /* Enhanced Responsive Design */
+    @media (max-width: 1400px) {
+      nav { padding-left: clamp(60px, 7vw, 80px); padding-right: clamp(45px, 5.5vw, 55px); }
+      nav ul { gap: clamp(0.15rem, 0.5vw, 0.5rem); }
+      nav ul li a { font-size: clamp(0.6rem, 0.9vw, 0.75rem); padding: clamp(2px, 0.4vw, 3px) clamp(4px, 0.8vw, 6px); letter-spacing: 0.2px; }
+      .dark-mode-toggle { font-size: clamp(0.9rem, 1.4vw, 1.1rem); padding: clamp(4px, 0.7vw, 6px); }
+    }
+
+    @media (max-width: 1300px) {
+      nav { padding-left: clamp(55px, 6vw, 70px); padding-right: clamp(40px, 5vw, 50px); }
+      nav ul { gap: clamp(0.1rem, 0.4vw, 0.4rem); }
+      nav ul li a { font-size: clamp(0.55rem, 0.85vw, 0.7rem); padding: clamp(1px, 0.3vw, 2px) clamp(3px, 0.7vw, 5px); letter-spacing: 0.1px; }
+      .dark-mode-toggle { font-size: clamp(0.85rem, 1.3vw, 1rem); padding: clamp(4px, 0.6vw, 5px); }
+    }
+
+    @media (max-width: 1270px) {
+      nav { padding-left: clamp(50px, 5vw, 60px); padding-right: clamp(35px, 4.5vw, 45px); }
+      nav ul { gap: clamp(0.05rem, 0.3vw, 0.3rem); }
+      nav ul li a { font-size: clamp(0.5rem, 0.8vw, 0.65rem); padding: clamp(1px, 0.2vw, 2px) clamp(2px, 0.6vw, 4px); letter-spacing: 0; }
+      .dark-mode-toggle { font-size: clamp(0.8rem, 1.2vw, 0.95rem); padding: clamp(3px, 0.5vw, 4px); }
+    }
+
+    @media (max-width: 1200px) {
+      nav { padding-left: clamp(45px, 4vw, 55px); padding-right: clamp(30px, 4vw, 40px); }
+      nav ul { gap: clamp(0.05rem, 0.2vw, 0.2rem); }
+      nav ul li a { font-size: clamp(0.5rem, 0.75vw, 0.6rem); padding: clamp(1px, 0.2vw, 2px) clamp(2px, 0.5vw, 3px); letter-spacing: 0; }
+      .dark-mode-toggle { font-size: clamp(0.75rem, 1.1vw, 0.9rem); padding: clamp(3px, 0.4vw, 4px); }
+      .academics-grid, .resources-grid { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+      .footer-grid { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+      .academics-hero { height: 100vh; }
+    }
+
+    @media (max-width: 992px) {
+      .academics-hero { height: 70vh; } /* Adjusted for smaller screens */
+      .academics-hero h1 { font-size: clamp(1.75rem, 5vw, 3rem); }
+      .tab-buttons { flex-direction: column; }
+      .tab-btn { width: 100%; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      .academics-hero { height: 60vh; }
+      header .container { height: 70px; }
+      header .logo { left: 10px; }
+      header .logo img { height: 2.75rem; }
+      header .logo span { font-size: 0.875rem; margin-top: 0.2rem; }
+      .dark-mode-toggle { top: 12px; right: 12px; font-size: 1rem; padding: 6px; }
+      .nav-toggle { display: block; right: clamp(45px, 8vw, 50px); font-size: 1.5rem; }
+      nav { padding: 0; }
+      nav ul {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: clamp(200px, 70vw, 250px);
+        height: 100vh;
+        background: #003087;
+        padding: clamp(4rem, 10vw, 5rem) 1rem 1rem;
+        flex-direction: column;
+        gap: 1rem;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+        z-index: 1000;
+        overflow-y: auto;
+      }
+      nav ul.active { display: flex; transform: translateX(0); }
+      nav ul li { margin: 0; }
+      nav ul li a { font-size: 1rem; padding: 10px 20px; width: 100%; text-align: left; border-radius: 0; }
+      body.dark-mode nav ul { background: #1c2526; }
+      body.nav-open::after {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+      }
+      .academics-hero h1 { font-size: clamp(1.5rem, 4vw, 2.25rem); }
+      .academics-grid, .resources-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 480px) {
+      .academics-hero { height: 50vh; }
+      header .container { height: 60px; }
+      header .logo img { height: 2.25rem; }
+      header .logo span { font-size: 0.75rem; margin-top: 0.15rem; }
+      .dark-mode-toggle { top: 10px; right: 10px; font-size: 0.875rem; padding: 5px; }
+      .nav-toggle { right: 40px; font-size: 1.25rem; }
+      nav ul { width: clamp(180px, 70vw, 200px); }
+      .academics-hero h1 { font-size: clamp(1.25rem, 3.5vw, 1.75rem); }
+      .academics-content { font-size: clamp(0.875rem, 1.5vw, 1rem); }
+      .academics-card, .resource-card { padding: 1.25rem; }
+      .tab-btn { padding: 8px 16px; }
+      .schedule-table th,
+      .schedule-table td {
+        padding: 6px;
+        font-size: clamp(0.65rem, 1.2vw, 0.75rem);
+      }
+    }
+
+    @media (max-width: 360px) {
+      .academics-hero { height: 45vh; }
+      .academics-hero h1 { font-size: 1.25rem; }
+      .dark-mode-toggle { font-size: 0.75rem; padding: 4px; }
+      .nav-toggle { right: 35px; font-size: 1.125rem; }
+      header .logo img { height: 1.75rem; }
+      header .logo span { font-size: 0.65rem; }
+      .schedule-table th,
+      .schedule-table td {
+        padding: 5px;
+        font-size: 0.65rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Dark Mode Toggle -->
+  <div class="dark-mode-toggle">
+    <i class="fas fa-moon"></i>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <div class="logo">
+        <a href="index.html"><img src="winsomite.jpg" alt="Winsome Model Schools Logo" loading="lazy"></a>
+        <span>Winsome</span>
+      </div>
+      <div class="nav-toggle" onclick="toggleNav()"><i class="fas fa-bars"></i></div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="academics.html">Academics</a></li>
+          <li><a href="admissions.html">Admissions</a></li>
+          <li><a href="faculty.html">Faculty & Staff</a></li>
+          <li><a href="facilities.html">Facilities</a></li>
+          <li><a href="student-life.html">Student Life</a></li>
+          <li><a href="news.html">News & Events</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+          <li><a href="#student-portal" onclick="openStudentPortal()">Student Portal</a></li>
+          <li><a href="admin.html">Admin Dashboard</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Academics Section -->
+  <section id="academics" class="container">
+    <div class="academics-hero">
+      <h1>Academic Excellence</h1>
+    </div>
+
+    <div class="academics-content">
+      <p>Our curriculum is meticulously designed to align with WAEC and NECO standards while fostering critical thinking, creativity, and global readiness. We offer a wide range of subjects across Science, Arts, Humanities, and Vocational streams, ensuring every student finds their path to success.</p>
+      <p>With a focus on experiential learning, our students engage in hands-on projects, research, and collaborative activities that prepare them for higher education and beyond. Our academic programs are supported by advanced technology, dedicated faculty, and a robust assessment system.</p>
+    </div>
+
+    <!-- Curriculum Filter -->
+    <div class="curriculum-filter">
+      <h3>Filter by Stream</h3>
+      <select id="curriculum-filter" onchange="filterCurriculum()">
+        <option value="all">All Subjects</option>
+        <option value="science">Science</option>
+        <option value="arts">Arts & Humanities</option>
+        <option value="vocational">Vocational</option>
+      </select>
+    </div>
+
+    <!-- Curriculum Grid -->
+    <div class="academics-grid" id="curriculum-grid">
+      <div class="academics-card" data-category="science">
+        <h3>Physics</h3>
+        <p>Explore the fundamental laws of nature, including mechanics, electricity, and magnetism.</p>
+        <ul>
+          <li>Topics: Mechanics, Thermodynamics, Waves</li>
+          <li>Practical: Experiments on motion, circuits, and optics</li>
+          <li>Assessment: Weekly quizzes, term projects</li>
+        </ul>
+        <a href="#" class="download-syllabus">Download Syllabus (PDF)</a>
+      </div>
+      <div class="academics-card" data-category="science">
+        <h3>Chemistry</h3>
+        <p>Master chemical reactions, organic chemistry, and laboratory techniques.</p>
+        <ul>
+          <li>Topics: Atomic Structure, Chemical Bonding, Stoichiometry</li>
+          <li>Practical: Titration, synthesis of compounds</li>
+          <li>Assessment: Lab reports, mid-term exams</li>
+        </ul>
+        <a href="#" class="download-syllabus">Download Syllabus (PDF)</a>
+      </div>
+      <div class="academics-card" data-category="science">
+        <h3>Biology</h3>
+        <p>Study living organisms, ecosystems, and human anatomy.</p>
+        <ul>
+          <li>Topics: Cell Biology, Genetics, Ecology</li>
+          <li>Practical: Dissection, microscope analysis</li>
+          <li>Assessment: Research papers, final exams</li>
+        </ul>
+        <a href="#" class="download-syllabus">Download Syllabus (PDF)</a>
+      </div>
+      <div class="academics-card" data-category="arts">
+        <h3>Literature</h3>
+        <p>Analyze classic and contemporary works, focusing on critical interpretation.</p>
+        <ul>
+          <li>Topics: Shakespeare, African Literature, Poetry</li>
+          <li>Practical: Literary analysis, creative writing</li>
+          <li>Assessment: Essays, oral presentations</li>
+        </ul>
+        <a href="#" class="download-syllabus">Download Syllabus (PDF)</a>
+      </div>
+      <div class="academics-card" data-category="arts">
+        <h3>History</h3>
+        <p>Explore global and Nigerian history, from ancient civilizations to modern times.</p>
+        <ul>
+          <li>Topics: Nigerian Independence, World Wars, Colonialism</li>
+          <li>Practical: Historical debates, timeline projects</li>
+          <li>Assessment: Research essays, group discussions</li>
+        </ul>
+        <a href="#" class="download-syllabus">Download Syllabus (PDF)</a>
+      </div>
+      <div class="academics-card" data-category="arts">
+        <h3>Government</h3>
+        <p>Understand political systems, governance, and civic responsibilities.</p>
+        <ul>
+          <li>Topics: Democracy, Nigerian Constitution, International Relations</li>
+          <li>Practical: Mock elections, policy analysis</li>
+          <li>Assessment: Debates, written exams</li>
+        </ul>
+        <a href="#" class="download-syllabus">Download Syllabus (PDF)</a>
+      </div>
+      <div class="academics-card" data-category="vocational">
+        <h3>Information Technology</h3>
+        <p>Learn coding, software development, and digital literacy.</p>
+        <ul>
+          <li>Topics: Python, Web Development, Cybersecurity</li>
+          <li>Practical: Building apps, website projects</li>
+          <li>Assessment: Coding challenges, project demos</li>
+        </ul>
+        <a href="#" class="download-syllabus">Download Syllabus (PDF)</a>
+      </div>
+      <div class="academics-card" data-category="vocational">
+        <h3>Home Economics</h3>
+        <p>Develop skills in nutrition, sewing, and household management.</p>
+        <ul>
+          <li>Topics: Food Preparation, Textile Design, Budgeting</li>
+          <li>Practical: Cooking sessions, sewing projects</li>
+          <li>Assessment: Practical exams, portfolio</li>
+        </ul>
+        <a href="#" class="download-syllabus">Download Syllabus (PDF)</a>
+      </div>
+      <div class="academics-card" data-category="vocational">
+        <h3>Technical Drawing</h3>
+        <p>Master engineering drawing, design, and architectural drafting.</p>
+        <ul>
+          <li>Topics: Orthographic Projection, Isometric Drawing</li>
+          <li>Practical: Drafting blueprints, 3D modeling</li>
+          <li>Assessment: Drawing assignments, final projects</li>
+        </ul>
+        <a href="#" class="download-syllabus">Download Syllabus (PDF)</a>
+      </div>
+    </div>
+
+    <!-- Academic Schedule -->
+    <h3 class="section-title">Academic Schedule</h3>
+    <div class="schedule-tabs">
+      <div class="tab-buttons">
+        <button class="tab-btn active" onclick="openTab('junior')">Junior Secondary</button>
+        <button class="tab-btn" onclick="openTab('senior')">Senior Secondary</button>
+      </div>
+      <div id="junior" class="tab-content active">
+        <div class="schedule-table-wrapper">
+          <table class="schedule-table">
+            <thead>
+              <tr>
+                <th>Time</th>
+                <th>Monday</th>
+                <th>Tuesday</th>
+                <th>Wednesday</th>
+                <th>Thursday</th>
+                <th>Friday</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>8:00 AM - 9:00 AM</td>
+                <td>Mathematics</td>
+                <td>English</td>
+                <td>Science</td>
+                <td>Social Studies</td>
+                <td>Physical Education</td>
+              </tr>
+              <tr>
+                <td>9:00 AM - 10:00 AM</td>
+                <td>English</td>
+                <td>Mathematics</td>
+                <td>ICT</td>
+                <td>Science</td>
+                <td>Creative Arts</td>
+              </tr>
+              <tr>
+                <td>10:00 AM - 11:00 AM</td>
+                <td>Science</td>
+                <td>Social Studies</td>
+                <td>Mathematics</td>
+                <td>English</td>
+                <td>Vocational Studies</td>
+              </tr>
+              <tr>
+                <td>11:00 AM - 12:00 PM</td>
+                <td>Break</td>
+                <td>Break</td>
+                <td>Break</td>
+                <td>Break</td>
+                <td>Break</td>
+              </tr>
+              <tr>
+                <td>12:00 PM - 1:00 PM</td>
+                <td>ICT</td>
+                <td>Creative Arts</td>
+                <td>Social Studies</td>
+                <td>Mathematics</td>
+                <td>Science</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div id="senior" class="tab-content">
+        <div class="schedule-table-wrapper">
+          <table class="schedule-table">
+            <thead>
+              <tr>
+                <th>Time</th>
+                <th>Monday</th>
+                <th>Tuesday</th>
+                <th>Wednesday</th>
+                <th>Thursday</th>
+                <th>Friday</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>8:00 AM - 9:00 AM</td>
+                <td>Physics</td>
+                <td>Chemistry</td>
+                <td>Biology</td>
+                <td>Literature</td>
+                <td>Government</td>
+              </tr>
+              <tr>
+                <td>9:00 AM - 10:00 AM</td>
+                <td>Mathematics</td>
+                <td>English</td>
+                <td>Economics</td>
+                <td>Geography</td>
+                <td>ICT</td>
+              </tr>
+              <tr>
+                <td>10:00 AM - 11:00 AM</td>
+                <td>Chemistry</td>
+                <td>Physics</td>
+                <td>Mathematics</td>
+                <td>English</td>
+                <td>Vocational Studies</td>
+              </tr>
+              <tr>
+                <td>11:00 AM - 12:00 PM</td>
+                <td>Break</td>
+                <td>Break</td>
+                <td>Break</td>
+                <td>Break</td>
+                <td>Break</td>
+              </tr>
+              <tr>
+                <td>12:00 PM - 1:00 PM</td>
+                <td>English</td>
+                <td>Economics</td>
+                <td>Geography</td>
+                <td>Mathematics</td>
+                <td>Physics</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Academic Resources -->
+    <h3 class="section-title">Academic Resources</h3>
+    <div class="resources-grid">
+      <div class="resource-card">
+        <h4>E-Library Access</h4>
+        <p>Access over 10,000 digital books, journals, and study materials through our online portal.</p>
+        <a href="#" class="btn">Visit E-Library</a>
+      </div>
+      <div class="resource-card">
+        <h4>Past Question Papers</h4>
+        <p>Download past WAEC and NECO question papers to prepare for exams.</p>
+        <a href="#" class="btn">Download Papers</a>
+      </div>
+      <div class="resource-card">
+        <h4>Study Guides</h4>
+        <p>Comprehensive study guides for all subjects, created by our expert faculty.</p>
+        <a href="#" class="btn">Access Guides</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-column">
+          <h3>Winsome Model Schools</h3>
+          <p>Araromi Street, Ifako-Jaiye, Ojooromo, Lagos, Nigeria</p>
+          <p>Phone: +234 803 231 9017</p>
+          <p>Email: info@winsomemodelschools.org</p>
+          <p>Hours: Mon-Fri 8am-6pm, Sat 9am-2pm</p>
+        </div>
+        <div class="footer-column">
+          <h3>Quick Links</h3>
+          <a href="about.html">About Us</a>
+          <a href="academics.html">Academics</a>
+          <a href="admissions.html">Admissions</a>
+          <a href="faculty.html">Faculty & Staff</a>
+          <a href="facilities.html">Facilities</a>
+          <a href="student-life.html">Student Life</a>
+          <a href="news.html">News & Events</a>
+          <a href="contact.html">Contact Us</a>
+          <a href="admin.html">Admin Dashboard</a>
+        </div>
+        <div class="footer-column">
+          <h3>Explore More</h3>
+          <a href="news.html#calendar">Event Calendar</a>
+          <a href="facilities.html#virtual-tour">Virtual Tour</a>
+          <a href="student-life.html#gallery">Student Gallery</a>
+          <a href="contact.html#newsletter">Newsletter Signup</a>
+        </div>
+        <div class="footer-column">
+          <h3>Follow Us</h3>
+          <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook-f animate-icon"></i></a>
+            <a href="#"><i class="fab fa-twitter animate-icon"></i></a>
+            <a href="#"><i class="fab fa-instagram animate-icon"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in animate-icon"></i></a>
+            <a href="#"><i class="fab fa-youtube animate-icon"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 Winsome Model Schools. All Rights Reserved.</p>
+        <div class="footer-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">FAQs</a>
+          <a href="#">Accessibility</a>
+          <a href="#">Sitemap</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Student Portal Modal -->
+  <div id="student-portal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal" onclick="closeStudentPortal()">×</span>
+      <h3>Student Portal Login</h3>
+      <form id="portal-login" onsubmit="handlePortalLogin(event)">
+        <input type="text" name="username" placeholder="Username" required>
+        <input type="password" name="password" placeholder="Password" required>
+        <button type="submit">Login</button>
+      </form>
+      <p id="portal-message"></p>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollTrigger.min.js"></script>
+  <script>
+    // Dark Mode Toggle
+    document.querySelector('.dark-mode-toggle').addEventListener('click', () => {
+      const body = document.body;
+      const icon = document.querySelector('.dark-mode-toggle i');
+      body.classList.toggle('dark-mode');
+      icon.classList.toggle('fa-moon');
+      icon.classList.toggle('fa-sun');
+    });
+
+    // Navigation Toggle for Mobile
+    window.toggleNav = function () {
+      const nav = document.querySelector('nav ul');
+      nav.classList.toggle('active');
+      document.body.classList.toggle('nav-open');
+    };
+
+    // Close Mobile Nav When Clicking Outside
+    document.addEventListener('click', (e) => {
+      const nav = document.querySelector('nav ul');
+      const navToggle = document.querySelector('.nav-toggle');
+      if (!nav.contains(e.target) && !navToggle.contains(e.target) && nav.classList.contains('active')) {
+        nav.classList.remove('active');
+        document.body.classList.remove('nav-open');
+      }
+    });
+
+    // Header Scroll Effect
+    window.addEventListener('scroll', () => {
+      const header = document.querySelector('header');
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+
+    // Curriculum Filter
+    window.filterCurriculum = function () {
+      const filter = document.getElementById('curriculum-filter').value;
+      const cards = document.querySelectorAll('.academics-card');
+      cards.forEach(card => {
+        if (filter === 'all' || card.getAttribute('data-category') === filter) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    };
+
+    // Tab Functionality
+    window.openTab = function (tabName) {
+      const tabContents = document.querySelectorAll('.tab-content');
+      const tabButtons = document.querySelectorAll('.tab-btn');
+      tabContents.forEach(content => {
+        content.classList.remove('active');
+      });
+      tabButtons.forEach(button => {
+        button.classList.remove('active');
+      });
+      document.getElementById(tabName).classList.add('active');
+      event.currentTarget.classList.add('active');
+    };
+
+    // Student Portal Modal Functions
+    window.openStudentPortal = function (event) {
+      event.preventDefault();
+      const modal = document.getElementById('student-portal');
+      if (modal) {
+        modal.style.display = 'flex';
+        console.log('Student Portal modal opened');
+      } else {
+        console.error('Student Portal modal not found in the DOM');
+      }
+    };
+
+    window.closeStudentPortal = function () {
+      const modal = document.getElementById('student-portal');
+      if (modal) {
+        modal.style.display = 'none';
+        console.log('Student Portal modal closed');
+      } else {
+        console.error('Student Portal modal not found in the DOM');
+      }
+    };
+
+    window.handlePortalLogin = function (event) {
+      event.preventDefault();
+      const message = document.getElementById('portal-message');
+      if (message) {
+        message.textContent = 'Login functionality coming soon!';
+        message.style.color = document.body.classList.contains('dark-mode') ? '#ffeb3b' : '#003087';
+      } else {
+        console.error('Portal message element not found');
+      }
+    };
+
+    // Debugging: Check if the Student Portal link is working
+    document.addEventListener('DOMContentLoaded', () => {
+      const studentPortalLink = document.querySelector('nav ul li a[href="#student-portal"]');
+      if (studentPortalLink) {
+        studentPortalLink.addEventListener('click', openStudentPortal);
+        console.log('Student Portal link event listener added');
+      } else {
+        console.error('Student Portal link not found in the navigation');
+      }
+    });
+
+    // GSAP Animations for Cards
+    gsap.utils.toArray('.academics-card, .resource-card').forEach(card => {
+      gsap.from(card, {
+        scrollTrigger: {
+          trigger: card,
+          start: 'top 80%',
+          end: 'top 50%',
+          scrub: 1,
+        },
+        opacity: 0,
+        y: 50,
+        duration: 1,
+      });
+    });
+  </script>
+</body>
+</html>

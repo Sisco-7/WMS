@@ -1,0 +1,1602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="description" content="Admin Dashboard for Winsome Model Schools to manage submissions, users, analytics, and notifications.">
+  <meta name="theme-color" content="#003087">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <title>Admin Dashboard - Winsome Model Schools</title>
+  <style>
+    /* Reset and Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #f9f9f9;
+      color: #333;
+      line-height: 1.8;
+      overflow-x: hidden;
+      transition: background 0.5s ease, color 0.5s ease;
+    }
+
+    body.dark-mode {
+      background: #1c2526;
+      color: #e0e0e0;
+    }
+
+    /* Dark Mode Toggle */
+    .dark-mode-toggle {
+      position: fixed;
+      top: 15px;
+      right: 15px;
+      font-size: clamp(1rem, 1.5vw, 1.2rem);
+      cursor: pointer;
+      color: #fff;
+      background: #003087;
+      padding: clamp(5px, 0.8vw, 7px);
+      border-radius: 8px;
+      z-index: 1001;
+      transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .dark-mode-toggle:hover {
+      transform: scale(1.05);
+      background: #0056b3;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    body.dark-mode .dark-mode-toggle {
+      background: #ffd700;
+      color: #003087;
+      box-shadow: 0 2px 8px rgba(255, 215, 0, 0.3);
+    }
+
+    body.dark-mode .dark-mode-toggle:hover {
+      background: #ffeb3b;
+      box-shadow: 0 4px 12px rgba(255, 215, 0, 0.4);
+    }
+
+    /* Utility Classes */
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 clamp(15px, 2vw, 20px);
+      width: 100%;
+    }
+
+    .btn {
+      display: inline-block;
+      background: linear-gradient(135deg, #003087, #0056b3);
+      color: white;
+      padding: clamp(10px, 2vw, 14px) clamp(20px, 3vw, 30px);
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: clamp(0.875rem, 2vw, 1.125rem);
+      text-decoration: none;
+      transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 5px 15px rgba(0, 48, 135, 0.3);
+      touch-action: manipulation; /* Improve touch responsiveness */
+      min-width: 120px; /* Ensure buttons are large enough for touch */
+    }
+
+    .btn:hover {
+      transform: translateY(-5px) scale(1.05);
+      background: linear-gradient(135deg, #0056b3, #007bff);
+      box-shadow: 0 10px 25px rgba(0, 48, 135, 0.6);
+    }
+
+    body.dark-mode .btn {
+      background: linear-gradient(135deg, #ffd700, #ffeb3b);
+      color: #003087;
+      box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+    }
+
+    body.dark-mode .btn:hover {
+      background: linear-gradient(135deg, #ffeb3b, #fff59d);
+      box-shadow: 0 10px 25px rgba(255, 215, 0, 0.7);
+    }
+
+    .section-title {
+      color: #003087;
+      font-size: clamp(2rem, 5vw, 2.75rem);
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: clamp(2rem, 4vw, 3rem);
+      position: relative;
+      text-transform: uppercase;
+    }
+
+    body.dark-mode .section-title {
+      color: #ffd700;
+    }
+
+    .section-title::after {
+      content: '';
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(to right, #ffd700, #ffeb3b);
+      position: absolute;
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      animation: pulse 2s infinite ease-in-out;
+    }
+
+    /* Header (Aligned with index.html) */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: linear-gradient(135deg, #003087, #0056b3);
+      color: white;
+      padding: 0;
+      z-index: 1000;
+      transition: background 0.4s ease, box-shadow 0.4s ease;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      border-bottom: 2px solid rgba(255, 215, 0, 0.2);
+    }
+
+    header.scrolled {
+      background: linear-gradient(135deg, #002570, #0044a0);
+      box-shadow: 0 6px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    body.dark-mode header {
+      background: linear-gradient(135deg, #1c2526, #2c3e50);
+      border-bottom: 2px solid rgba(255, 215, 0, 0.2);
+    }
+
+    body.dark-mode header.scrolled {
+      background: linear-gradient(135deg, #162022, #263238);
+      box-shadow: 0 6px 25px rgba(255, 215, 0, 0.3);
+    }
+
+    header .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 clamp(15px, 2vw, 20px);
+      height: clamp(70px, 10vw, 90px);
+    }
+
+    header .logo {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: absolute;
+      left: clamp(10px, 2vw, 20px);
+    }
+
+    header .logo img {
+      height: clamp(2.5rem, 5vw, 3.5rem);
+      transition: transform 0.3s ease;
+      object-fit: contain; /* Ensure images scale properly */
+    }
+
+    header .logo img:hover {
+      transform: scale(1.05);
+    }
+
+    header .logo span {
+      font-size: clamp(0.75rem, 1.5vw, 1rem);
+      font-weight: 600;
+      color: #ffd700;
+      margin-top: 0.25rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    body.dark-mode header .logo span {
+      color: #ffeb3b;
+    }
+
+    nav {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      flex-grow: 1;
+      padding-left: clamp(70px, 8vw, 90px);
+      padding-right: clamp(50px, 6vw, 60px);
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      align-items: center;
+      gap: clamp(0.2rem, 0.6vw, 0.6rem);
+      margin: 0;
+      flex-wrap: nowrap;
+    }
+
+    nav ul li {
+      display: flex;
+      align-items: center;
+    }
+
+    nav ul li a {
+      color: white;
+      font-size: clamp(0.65rem, 1vw, 0.8rem);
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+      padding: clamp(2px, 0.5vw, 4px) clamp(5px, 1vw, 8px);
+      border-radius: 25px;
+      transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
+      position: relative;
+      text-decoration: none;
+      line-height: 1;
+      white-space: nowrap;
+    }
+
+    nav ul li a:hover {
+      color: #ffd700;
+      background: rgba(255, 255, 255, 0.15);
+      transform: translateY(-2px);
+    }
+
+    body.dark-mode nav ul li a {
+      color: #e0e0e0;
+    }
+
+    body.dark-mode nav ul li a:hover {
+      color: #ffd700;
+      background: rgba(255, 215, 0, 0.15);
+    }
+
+    nav ul li a::after {
+      content: '';
+      position: absolute;
+      bottom: 4px;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background: #ffd700;
+      transition: width 0.3s ease, left 0.3s ease;
+    }
+
+    nav ul li a:hover::after {
+      width: 50%;
+      left: 25%;
+    }
+
+    body.dark-mode nav ul li a::after {
+      background: #ffd700;
+    }
+
+    .nav-toggle {
+      display: none;
+      font-size: clamp(1.25rem, 3vw, 1.75rem);
+      cursor: pointer;
+      color: white;
+      transition: transform 0.3s ease;
+      z-index: 1002;
+      position: absolute;
+      right: clamp(60px, 10vw, 80px);
+    }
+
+    .nav-toggle:hover {
+      transform: rotate(90deg);
+    }
+
+    /* Admin Login Modal */
+    .admin-login-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+      animation: fadeIn 0.5s ease-out forwards;
+    }
+
+    .admin-login-content {
+      background: linear-gradient(135deg, #ffffff, #f0f4f8);
+      padding: clamp(1.5rem, 3vw, 2rem);
+      border-radius: 15px;
+      width: 90%;
+      max-width: 400px;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      animation: slideIn 0.5s ease-out forwards;
+      border: 2px solid #003087;
+    }
+
+    body.dark-mode .admin-login-content {
+      background: linear-gradient(135deg, #1c2526, #2c3e50);
+      box-shadow: 0 10px 25px rgba(255, 215, 0, 0.3);
+      border-color: #ffd700;
+    }
+
+    .close-modal {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      cursor: pointer;
+      color: #003087;
+      transition: transform 0.3s ease, color 0.3s ease;
+    }
+
+    .close-modal:hover {
+      transform: rotate(90deg);
+      color: #ffd700;
+    }
+
+    body.dark-mode .close-modal {
+      color: #ffd700;
+    }
+
+    body.dark-mode .close-modal:hover {
+      color: #ffeb3b;
+    }
+
+    .admin-login-content input {
+      padding: 12px;
+      border: 2px solid #003087;
+      border-radius: 25px;
+      font-size: clamp(0.875rem, 1.5vw, 1rem);
+      background: #fff;
+      margin-bottom: 1rem;
+      transition: border-color 0.3s ease, transform 0.3s ease;
+      width: 100%;
+    }
+
+    .admin-login-content input:focus {
+      border-color: #ffd700;
+      transform: scale(1.05);
+      outline: none;
+    }
+
+    body.dark-mode .admin-login-content input {
+      background: #1c2526;
+      color: #e0e0e0;
+      border-color: #ffd700;
+    }
+
+    body.dark-mode .admin-login-content input:focus {
+      border-color: #ffeb3b;
+    }
+
+    .admin-login-content button {
+      background: linear-gradient(135deg, #003087, #0056b3);
+      color: white;
+      padding: 12px;
+      border: none;
+      border-radius: 50px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 5px 15px rgba(0, 48, 135, 0.3);
+      width: 100%;
+    }
+
+    .admin-login-content button:hover {
+      transform: scale(1.1);
+      background: linear-gradient(135deg, #0056b3, #007bff);
+      box-shadow: 0 10px 25px rgba(0, 48, 135, 0.6);
+    }
+
+    body.dark-mode .admin-login-content button {
+      background: linear-gradient(135deg, #ffd700, #ffeb3b);
+      color: #003087;
+      box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+    }
+
+    body.dark-mode .admin-login-content button:hover {
+      background: linear-gradient(135deg, #ffeb3b, #fff59d);
+      box-shadow: 0 10px 25px rgba(255, 215, 0, 0.7);
+    }
+
+    #login-message {
+      margin-top: 1rem;
+      font-size: clamp(0.85rem, 1.5vw, 0.9rem);
+      color: #003087;
+      font-weight: 500;
+      text-transform: uppercase;
+    }
+
+    body.dark-mode #login-message {
+      color: #ffd700;
+    }
+
+    /* Admin Dashboard */
+    .admin-dashboard {
+      padding: clamp(2rem, 5vw, 3rem) 0;
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+      display: none;
+    }
+
+    .admin-section {
+      margin-bottom: clamp(2.5rem, 5vw, 3.5rem);
+    }
+
+    .admin-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0;
+      background: #fff;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    body.dark-mode .admin-table {
+      background: #263238;
+      box-shadow: 0 5px 20px rgba(255, 215, 0, 0.2);
+    }
+
+    .admin-table th,
+    .admin-table td {
+      padding: clamp(0.75rem, 1.5vw, 1rem);
+      border-bottom: 1px solid #ddd;
+      text-align: left;
+      font-size: clamp(0.75rem, 1.5vw, 0.875rem);
+    }
+
+    body.dark-mode .admin-table th,
+    body.dark-mode .admin-table td {
+      border-bottom: 1px solid #444;
+      color: #e0e0e0;
+    }
+
+    .admin-table th {
+      background: linear-gradient(135deg, #003087, #0056b3);
+      color: white;
+    }
+
+    body.dark-mode .admin-table th {
+      background: linear-gradient(135deg, #1c2526, #2c3e50);
+      color: #ffd700;
+    }
+
+    .admin-table tr:hover {
+      background: rgba(0, 48, 135, 0.1);
+    }
+
+    body.dark-mode .admin-table tr:hover {
+      background: rgba(255, 215, 0, 0.1);
+    }
+
+    /* Responsive Table Wrapper */
+    .table-wrapper {
+      overflow-x: auto;
+      margin: 1.5rem 0;
+    }
+
+    .chart-container {
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 1.5rem;
+      background: #fff;
+      border-radius: 15px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    body.dark-mode .chart-container {
+      background: #263238;
+      box-shadow: 0 5px 20px rgba(255, 215, 0, 0.2);
+    }
+
+    .notification-form {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 1.5rem;
+      background: #fff;
+      border-radius: 15px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    body.dark-mode .notification-form {
+      background: #263238;
+      box-shadow: 0 5px 20px rgba(255, 215, 0, 0.2);
+    }
+
+    .notification-form input,
+    .notification-form textarea {
+      width: 100%;
+      padding: 12px;
+      border: 2px solid #003087;
+      border-radius: 25px;
+      font-size: clamp(0.875rem, 1.5vw, 1rem);
+      background: #fff;
+      margin-bottom: 1rem;
+      transition: border-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .notification-form input:focus,
+    .notification-form textarea:focus {
+      border-color: #ffd700;
+      transform: scale(1.05);
+      outline: none;
+    }
+
+    body.dark-mode .notification-form input,
+    body.dark-mode .notification-form textarea {
+      background: #1c2526;
+      color: #e0e0e0;
+      border-color: #ffd700;
+    }
+
+    body.dark-mode .notification-form input:focus,
+    body.dark-mode .notification-form textarea:focus {
+      border-color: #ffeb3b;
+    }
+
+    .notification-form button {
+      background: linear-gradient(135deg, #003087, #0056b3);
+      color: white;
+      padding: 12px;
+      border: none;
+      border-radius: 50px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 5px 15px rgba(0, 48, 135, 0.3);
+      width: 100%;
+    }
+
+    .notification-form button:hover {
+      transform: scale(1.1);
+      background: linear-gradient(135deg, #0056b3, #007bff);
+      box-shadow: 0 10px 25px rgba(0, 48, 135, 0.6);
+    }
+
+    body.dark-mode .notification-form button {
+      background: linear-gradient(135deg, #ffd700, #ffeb3b);
+      color: #003087;
+      box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+    }
+
+    body.dark-mode .notification-form button:hover {
+      background: linear-gradient(135deg, #ffeb3b, #fff59d);
+      box-shadow: 0 10px 25px rgba(255, 215, 0, 0.7);
+    }
+
+    #notification-message,
+    #user-message {
+      margin-top: 1rem;
+      font-size: clamp(0.85rem, 1.5vw, 0.9rem);
+      color: #003087;
+      font-weight: 500;
+      text-transform: uppercase;
+    }
+
+    body.dark-mode #notification-message,
+    body.dark-mode #user-message {
+      color: #ffd700;
+    }
+
+    /* Footer (Copied from index.html) */
+    footer {
+      background: linear-gradient(135deg, #003087, #0056b3);
+      color: white;
+      padding: clamp(2.5rem, 5vw, 3.75rem) 0 clamp(1rem, 2vw, 1.25rem);
+    }
+
+    body.dark-mode footer {
+      background: linear-gradient(135deg, #1c2526, #263238);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(clamp(200px, 25vw, 300px), 1fr));
+      gap: clamp(1.5rem, 3vw, 2.5rem);
+      margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+    }
+
+    .footer-column {
+      padding: clamp(1rem, 2vw, 1.5rem);
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+
+    .footer-column:hover {
+      transform: translateY(-5px);
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .footer-column h3 {
+      color: #ffd700;
+      margin-bottom: 1rem;
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      font-weight: 600;
+    }
+
+    .footer-column p {
+      margin: 0.5rem 0;
+      font-size: clamp(0.85rem, 1.5vw, 0.95rem);
+      line-height: 1.5;
+      color: #e0e0e0;
+    }
+
+    .footer-column:first-child p {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .footer-column:first-child p::before {
+      font-family: "Font Awesome 5 Free";
+      font-weight: 900;
+      color: #ffd700;
+    }
+
+    .footer-column:first-child p:nth-child(2)::before {
+      content: "\f3c5";
+    }
+
+    .footer-column:first-child p:nth-child(3)::before {
+      content: "\f095";
+    }
+
+    .footer-column:first-child p:nth-child(4)::before {
+      content: "\f0e0";
+    }
+
+    .footer-column:first-child p:nth-child(5)::before {
+      content: "\f017";
+    }
+
+    .footer-column:nth-child(2),
+    .footer-column:nth-child(3) {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .footer-column a {
+      color: #e0e0e0;
+      text-decoration: none;
+      margin: 0.5rem 0;
+      font-size: clamp(0.85rem, 1.5vw, 0.95rem);
+      transition: color 0.3s ease, transform 0.3s ease;
+      display: inline-block;
+    }
+
+    .footer-column a:hover {
+      color: #ffd700;
+      transform: translateX(5px);
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .social-icons a {
+      font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+      color: #e0e0e0;
+      transition: transform 0.3s ease, color 0.3s ease;
+    }
+
+    .social-icons a:hover {
+      transform: scale(1.2);
+      color: #ffd700;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: clamp(0.75rem, 1.5vw, 1.25rem);
+    }
+
+    .footer-bottom p {
+      margin: 0.5rem 0;
+      color: #e0e0e0;
+      font-size: clamp(0.85rem, 1.5vw, 0.95rem);
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .footer-links a {
+      color: #e0e0e0;
+      margin: 0 0.5rem;
+      text-decoration: none;
+      font-size: clamp(0.85rem, 1.5vw, 0.95rem);
+      transition: color 0.3s ease;
+    }
+
+    .footer-links a:hover {
+      color: #ffd700;
+    }
+
+    /* Animation Keyframes */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateY(50px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes pulse {
+      0% { transform: translateX(-50%) scaleX(1); }
+      50% { transform: translateX(-50%) scaleX(1.2); }
+      100% { transform: translateX(-50%) scaleX(1); }
+    }
+
+    /* Responsive Design */
+    /* Ultra-Wide Screens */
+    @media (min-width: 1400px) {
+      .container {
+        max-width: 1600px;
+      }
+      nav ul li a {
+        font-size: clamp(0.9rem, 1.2vw, 1rem);
+        padding: clamp(4px, 0.6vw, 6px) clamp(8px, 1.2vw, 12px);
+      }
+      .btn {
+        padding: clamp(12px, 2.5vw, 16px) clamp(25px, 3.5vw, 35px);
+      }
+      .section-title {
+        font-size: clamp(2.5rem, 6vw, 3rem);
+      }
+    }
+
+    /* Large Desktops */
+    @media (max-width: 1400px) {
+      nav {
+        padding-left: clamp(60px, 7vw, 80px);
+        padding-right: clamp(45px, 5.5vw, 55px);
+      }
+      nav ul {
+        gap: clamp(0.15rem, 0.5vw, 0.5rem);
+      }
+      nav ul li a {
+        font-size: clamp(0.6rem, 0.9vw, 0.75rem);
+        padding: clamp(2px, 0.4vw, 3px) clamp(4px, 0.8vw, 6px);
+        letter-spacing: 0.2px;
+      }
+      .dark-mode-toggle {
+        font-size: clamp(0.9rem, 1.4vw, 1.1rem);
+        padding: clamp(4px, 0.7vw, 6px);
+      }
+    }
+
+    /* Medium Desktops */
+    @media (max-width: 1200px) {
+      nav {
+        padding-left: clamp(45px, 4vw, 55px);
+        padding-right: clamp(30px, 4vw, 40px);
+      }
+      nav ul {
+        gap: clamp(0.05rem, 0.2vw, 0.2rem);
+      }
+      nav ul li a {
+        font-size: clamp(0.5rem, 0.75vw, 0.6rem);
+        padding: clamp(1px, 0.2vw, 2px) clamp(2px, 0.5vw, 3px);
+        letter-spacing: 0;
+      }
+      .dark-mode-toggle {
+        font-size: clamp(0.75rem, 1.1vw, 0.9rem);
+        padding: clamp(3px, 0.4vw, 4px);
+      }
+    }
+
+    /* Tablets */
+    @media (max-width: 992px) {
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .admin-table th,
+      .admin-table td {
+        font-size: clamp(0.65rem, 1.2vw, 0.75rem);
+        padding: clamp(0.5rem, 1vw, 0.75rem);
+      }
+      .chart-container,
+      .notification-form {
+        max-width: 100%;
+        padding: 1rem;
+      }
+    }
+
+    /* Mobile Devices */
+    @media (max-width: 768px) {
+      header .container {
+        height: 70px;
+      }
+      header .logo {
+        left: 10px;
+      }
+      header .logo img {
+        height: 2.75rem;
+      }
+      header .logo span {
+        font-size: 0.875rem;
+        margin-top: 0.2rem;
+      }
+      .dark-mode-toggle {
+        top: 12px;
+        right: 12px;
+        font-size: 1rem;
+        padding: 6px;
+      }
+      .nav-toggle {
+        display: block;
+        right: clamp(45px, 8vw, 50px);
+        font-size: 1.5rem;
+      }
+      nav {
+        padding: 0;
+      }
+      nav ul {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: clamp(200px, 70vw, 250px);
+        height: 100vh;
+        background: #003087;
+        padding: clamp(4rem, 10vw, 5rem) 1rem 1rem;
+        flex-direction: column;
+        gap: 1rem;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+        z-index: 1000;
+        overflow-y: auto;
+      }
+      nav ul.active {
+        display: flex;
+        transform: translateX(0);
+      }
+      nav ul li {
+        margin: 0;
+      }
+      nav ul li a {
+        font-size: 1rem;
+        padding: 10px 20px;
+        width: 100%;
+        text-align: left;
+        border-radius: 0;
+      }
+      body.dark-mode nav ul {
+        background: #1c2526;
+      }
+      body.nav-open::after {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+      }
+      .admin-table th,
+      .admin-table td {
+        font-size: clamp(0.65rem, 1.2vw, 0.75rem);
+        padding: clamp(0.5rem, 1vw, 0.75rem);
+      }
+      .chart-container,
+      .notification-form {
+        padding: 1rem;
+        max-width: 100%;
+      }
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+      .admin-login-content {
+        width: 95%;
+        padding: 1rem;
+      }
+      .admin-login-content input,
+      .admin-login-content button {
+        font-size: 0.875rem;
+        padding: 10px;
+      }
+      .section-title {
+        font-size: clamp(1.5rem, 4vw, 2rem);
+      }
+      .btn {
+        padding: 10px 20px;
+        font-size: 0.875rem;
+      }
+      /* Responsive Tables */
+      .table-wrapper {
+        max-width: 100%;
+        overflow-x: auto;
+      }
+      .admin-table {
+        min-width: 600px; /* Ensure table is scrollable on small screens */
+      }
+    }
+
+    /* Small Mobile Devices */
+    @media (max-width: 480px) {
+      header .container {
+        height: 60px;
+      }
+      header .logo img {
+        height: 2.25rem;
+      }
+      header .logo span {
+        font-size: 0.75rem;
+        margin-top: 0.15rem;
+      }
+      .dark-mode-toggle {
+        top: 10px;
+        right: 10px;
+        font-size: 0.875rem;
+        padding: 5px;
+      }
+      .nav-toggle {
+        right: 40px;
+        font-size: 1.25rem;
+      }
+      nav ul {
+        width: clamp(180px, 70vw, 200px);
+      }
+      .admin-login-content,
+      .admin-table,
+      .chart-container,
+      .notification-form {
+        width: 95%;
+      }
+      .footer-column {
+        padding: 0.75rem;
+      }
+      .footer-column h3 {
+        font-size: 1rem;
+      }
+      .footer-column p,
+      .footer-column a,
+      .footer-bottom p,
+      .footer-links a {
+        font-size: 0.85rem;
+      }
+      .section-title {
+        font-size: clamp(1.25rem, 3.5vw, 1.75rem);
+      }
+      .btn {
+        padding: 8px 16px;
+        font-size: 0.75rem;
+      }
+    }
+
+    /* Extra Small Mobile Devices */
+    @media (max-width: 360px) {
+      .dark-mode-toggle {
+        font-size: 0.75rem;
+        padding: 4px;
+      }
+      .nav-toggle {
+        right: 35px;
+        font-size: 1.125rem;
+      }
+      header .logo img {
+        height: 1.75rem;
+      }
+      header .logo span {
+        font-size: 0.65rem;
+      }
+      .footer-column h3 {
+        font-size: 0.875rem;
+      }
+      .footer-column p,
+      .footer-column a,
+      .footer-bottom p,
+      .footer-links a {
+        font-size: 0.75rem;
+      }
+      .admin-login-content input,
+      .admin-login-content button {
+        font-size: 0.75rem;
+        padding: 8px;
+      }
+      .section-title {
+        font-size: clamp(1rem, 3vw, 1.5rem);
+      }
+      .btn {
+        padding: 6px 12px;
+        font-size: 0.65rem;
+      }
+    }
+
+    /* Landscape Orientation on Mobile */
+    @media (max-height: 500px) and (orientation: landscape) {
+      header .container {
+        height: 50px;
+      }
+      header .logo img {
+        height: 2rem;
+      }
+      header .logo span {
+        font-size: 0.65rem;
+      }
+      .dark-mode-toggle {
+        top: 8px;
+        right: 8px;
+        font-size: 0.75rem;
+        padding: 4px;
+      }
+      .nav-toggle {
+        right: 35px;
+        font-size: 1rem;
+      }
+      nav ul {
+        width: clamp(150px, 50vw, 200px);
+        padding-top: 3rem;
+      }
+      nav ul li a {
+        font-size: 0.875rem;
+        padding: 8px 16px;
+      }
+      .admin-login-content {
+        width: 80%;
+        max-height: 80vh;
+        overflow-y: auto;
+      }
+      .admin-table th,
+      .admin-table td {
+        font-size: 0.65rem;
+        padding: 0.5rem;
+      }
+      .chart-container,
+      .notification-form {
+        padding: 0.75rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Dark Mode Toggle -->
+  <div class="dark-mode-toggle">
+    <i class="fas fa-moon"></i>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <div class="logo">
+        <a href="index.html"><img src="winsomite.jpg" alt="Winsome Model Schools Logo" loading="lazy"></a>
+        <span>Winsome</span>
+      </div>
+      <div class="nav-toggle" onclick="toggleNav()"><i class="fas fa-bars"></i></div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="academics.html">Academics</a></li>
+          <li><a href="admissions.html">Admissions</a></li>
+          <li><a href="faculty.html">Faculty & Staff</a></li>
+          <li><a href="facilities.html">Facilities</a></li>
+          <li><a href="student-life.html">Student Life</a></li>
+          <li><a href="news.html">News & Events</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+          <li><a href="admissions.html#student-portal">Student Portal</a></li>
+          <li><a href="admin.html">Admin Dashboard</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Admin Login Modal -->
+  <div id="admin-login-modal" class="admin-login-modal">
+    <div class="admin-login-content">
+      <span class="close-modal" onclick="closeAdminLogin()">×</span>
+      <h3>Admin Login</h3>
+      <form id="admin-login-form" onsubmit="handleAdminLogin(event)">
+        <input type="text" id="admin-username" placeholder="Username" required>
+        <input type="password" id="admin-password" placeholder="Password" required>
+        <button type="submit">Login</button>
+      </form>
+      <p id="login-message"></p>
+    </div>
+  </div>
+
+  <!-- Admin Dashboard -->
+  <div id="admin-dashboard" class="admin-dashboard">
+    <h2 class="section-title">Admin Dashboard</h2>
+
+    <!-- Contact Form Submissions -->
+    <div class="admin-section">
+      <h3>Contact Form Submissions</h3>
+      <div class="table-wrapper">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>Subject</th>
+              <th>Message</th>
+              <th>Timestamp</th>
+            </tr>
+          </thead>
+          <tbody id="contact-submissions-table"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Appointment Form Submissions -->
+    <div class="admin-section">
+      <h3>Appointment Form Submissions</h3>
+      <div class="table-wrapper">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>Type</th>
+              <th>Date</th>
+              <th>Time</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Timestamp</th>
+            </tr>
+          </thead>
+          <tbody id="appointment-submissions-table"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Newsletter Form Submissions -->
+    <div class="admin-section">
+      <h3>Newsletter Subscriptions</h3>
+      <div class="table-wrapper">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>Email</th>
+              <th>Name</th>
+              <th>Interests</th>
+              <th>Timestamp</th>
+            </tr>
+          </thead>
+          <tbody id="newsletter-submissions-table"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Admissions Submissions -->
+    <div class="admin-section">
+      <h3>Admissions Submissions</h3>
+      <div class="table-wrapper">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>Student Name</th>
+              <th>Parent Name</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>Level</th>
+              <th>Documents</th>
+              <th>Timestamp</th>
+            </tr>
+          </thead>
+          <tbody id="admissions-submissions-table"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- User Management -->
+    <div class="admin-section">
+      <h3>User Management</h3>
+      <div class="table-wrapper">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Role</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="users-table"></tbody>
+        </table>
+      </div>
+      <form id="add-user-form" onsubmit="addUser(event)" style="margin-top: 1rem;">
+        <input type="text" name="user-name" placeholder="Name" required>
+        <input type="email" name="user-email" placeholder="Email" required>
+        <select name="user-role" required>
+          <option value="student">Student</option>
+          <option value="parent">Parent</option>
+          <option value="staff">Staff</option>
+        </select>
+        <button type="submit" class="btn">Add User</button>
+      </form>
+      <p id="user-message"></p>
+    </div>
+
+    <!-- Analytics Dashboard -->
+    <div class="admin-section">
+      <h3>Analytics</h3>
+      <div class="chart-container">
+        <canvas id="analytics-chart"></canvas>
+      </div>
+    </div>
+
+    <!-- Notification System -->
+    <div class="admin-section">
+      <h3>Send Notification</h3>
+      <div class="notification-form">
+        <form id="notification-form" onsubmit="sendNotification(event)">
+          <input type="text" name="notification-title" placeholder="Title" required>
+          <textarea name="notification-message" rows="4" placeholder="Message" required></textarea>
+          <button type="submit" class="btn">Send</button>
+        </form>
+        <p id="notification-message"></p>
+      </div>
+    </div>
+
+    <!-- Click Tracking -->
+    <div class="admin-section">
+      <h3>User Interactions (Clicks)</h3>
+      <div class="table-wrapper">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>Action</th>
+              <th>Timestamp</th>
+            </tr>
+          </thead>
+          <tbody id="clicks-table"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Control Buttons -->
+    <div style="margin-top: 2rem;">
+      <button class="btn" onclick="clearData()">Clear All Data</button>
+      <button class="btn" style="margin-left: 1rem;" onclick="logout()">Logout</button>
+    </div>
+  </div>
+
+  <!-- Footer (Copied from index.html) -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-column">
+          <h3>Winsome Model Schools</h3>
+          <p>Araromi Street, Ifako-Jaiye, Ojooromo, Lagos, Nigeria</p>
+          <p>Phone: +234 803 231 9017</p>
+          <p>Email: info@winsomemodelschools.org</p>
+          <p>Hours: Mon-Fri 8am-6pm, Sat 9am-2pm</p>
+        </div>
+        <div class="footer-column">
+          <h3>Quick Links</h3>
+          <a href="about.html">About Us</a>
+          <a href="academics.html">Academics</a>
+          <a href="admissions.html">Admissions</a>
+          <a href="faculty.html">Faculty & Staff</a>
+          <a href="facilities.html">Facilities</a>
+          <a href="student-life.html">Student Life</a>
+          <a href="news.html">News & Events</a>
+          <a href="contact.html">Contact Us</a>
+          <a href="admin.html">Admin Dashboard</a>
+        </div>
+        <div class="footer-column">
+          <h3>Explore More</h3>
+          <a href="news.html#calendar">Event Calendar</a>
+          <a href="facilities.html#virtual-tour">Virtual Tour</a>
+          <a href="student-life.html#gallery">Student Gallery</a>
+          <a href="contact.html#newsletter">Newsletter Signup</a>
+        </div>
+        <div class="footer-column">
+          <h3>Follow Us</h3>
+          <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 Winsome Model Schools. All Rights Reserved.</p>
+        <div class="footer-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">FAQs</a>
+          <a href="#">Accessibility</a>
+          <a href="#">Sitemap</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollTrigger.min.js"></script>
+  <script>
+    // Dark Mode Toggle
+    document.querySelector('.dark-mode-toggle').addEventListener('click', () => {
+      const body = document.body;
+      const icon = document.querySelector('.dark-mode-toggle i');
+      body.classList.toggle('dark-mode');
+      icon.classList.toggle('fa-moon');
+      icon.classList.toggle('fa-sun');
+    });
+
+    // Navigation Toggle for Mobile
+    window.toggleNav = function () {
+      const nav = document.querySelector('nav ul');
+      nav.classList.toggle('active');
+      document.body.classList.toggle('nav-open');
+    };
+
+    // Close Mobile Nav When Clicking Outside
+    document.addEventListener('click', (e) => {
+      const nav = document.querySelector('nav ul');
+      const navToggle = document.querySelector('.nav-toggle');
+      if (!nav.contains(e.target) && !navToggle.contains(e.target) && nav.classList.contains('active')) {
+        nav.classList.remove('active');
+        document.body.classList.remove('nav-open');
+      }
+    });
+
+    // Header Scroll Effect
+    window.addEventListener('scroll', () => {
+      const header = document.querySelector('header');
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+
+    // Admin Login Modal
+    const ADMIN_CREDENTIALS = { username: 'Winsome', password: 'winsomemodel' };
+    window.openAdminLogin = function () {
+      document.getElementById('admin-login-modal').style.display = 'flex';
+    };
+
+    window.closeAdminLogin = function () {
+      document.getElementById('admin-login-modal').style.display = 'none';
+    };
+
+    window.handleAdminLogin = function (event) {
+      event.preventDefault();
+      const username = document.getElementById('admin-username').value;
+      const password = document.getElementById('admin-password').value;
+      const message = document.getElementById('login-message');
+      const dashboard = document.getElementById('admin-dashboard');
+
+      if (username === ADMIN_CREDENTIALS.username && password === ADMIN_CREDENTIALS.password) {
+        message.textContent = 'Login Successful!';
+        message.style.color = document.body.classList.contains('dark-mode') ? '#ffeb3b' : '#003087';
+        document.getElementById('admin-login-modal').style.display = 'none';
+        dashboard.style.display = 'block';
+        loadData();
+        updateAnalytics();
+      } else {
+        message.textContent = 'Incorrect Username or Password!';
+        message.style.color = '#ff0000';
+      }
+    };
+
+    // Load Data from localStorage
+    window.loadData = function () {
+      const contactSubmissions = JSON.parse(localStorage.getItem('contactSubmissions')) || [];
+      const appointmentSubmissions = JSON.parse(localStorage.getItem('appointmentSubmissions')) || [];
+      const newsletterSubmissions = JSON.parse(localStorage.getItem('newsletterSubmissions')) || [];
+      const admissionsSubmissions = JSON.parse(localStorage.getItem('admissionsSubmissions')) || [];
+      const clicks = JSON.parse(localStorage.getItem('clicks')) || [];
+      const users = JSON.parse(localStorage.getItem('users')) || [];
+
+      const contactTable = document.getElementById('contact-submissions-table');
+      const appointmentTable = document.getElementById('appointment-submissions-table');
+      const newsletterTable = document.getElementById('newsletter-submissions-table');
+      const admissionsTable = document.getElementById('admissions-submissions-table');
+      const clicksTable = document.getElementById('clicks-table');
+      const usersTable = document.getElementById('users-table');
+
+      // Populate Contact Submissions Table
+      contactTable.innerHTML = '';
+      contactSubmissions.forEach(submission => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${submission.name}</td>
+          <td>${submission.email}</td>
+          <td>${submission.phone}</td>
+          <td>${submission.subject}</td>
+          <td>${submission.message}</td>
+          <td>${submission.timestamp}</td>
+        `;
+        contactTable.appendChild(row);
+      });
+
+      // Populate Appointment Submissions Table
+      appointmentTable.innerHTML = '';
+      appointmentSubmissions.forEach(submission => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${submission.type}</td>
+          <td>${submission.date}</td>
+          <td>${submission.time}</td>
+          <td>${submission.name}</td>
+          <td>${submission.email}</td>
+          <td>${submission.timestamp}</td>
+        `;
+        appointmentTable.appendChild(row);
+      });
+
+      // Populate Newsletter Subscriptions Table
+      newsletterTable.innerHTML = '';
+      newsletterSubmissions.forEach(submission => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${submission.email}</td>
+          <td>${submission.name}</td>
+          <td>${submission.interests.join(', ') || 'None'}</td>
+          <td>${submission.timestamp}</td>
+        `;
+        newsletterTable.appendChild(row);
+      });
+
+      // Populate Admissions Submissions Table
+      admissionsTable.innerHTML = '';
+      admissionsSubmissions.forEach(submission => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${submission.studentName}</td>
+          <td>${submission.parentName}</td>
+          <td>${submission.email}</td>
+          <td>${submission.phone}</td>
+          <td>${submission.level}</td>
+          <td>${submission.documents.join(', ')}</td>
+          <td>${submission.timestamp}</td>
+        `;
+        admissionsTable.appendChild(row);
+      });
+
+      // Populate Clicks Table
+      clicksTable.innerHTML = '';
+      clicks.forEach(click => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${click.action}</td>
+          <td>${click.timestamp}</td>
+        `;
+        clicksTable.appendChild(row);
+      });
+
+      // Populate Users Table
+      usersTable.innerHTML = '';
+      users.forEach(user => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${user.name}</td>
+          <td>${user.email}</td>
+          <td>${user.role}</td>
+          <td><button class="btn" onclick="removeUser('${user.email}')">Remove</button></td>
+        `;
+        usersTable.appendChild(row);
+      });
+    };
+
+    // Add User
+    window.addUser = function (event) {
+      event.preventDefault();
+      const form = document.getElementById('add-user-form');
+      const name = form.querySelector('[name="user-name"]').value;
+      const email = form.querySelector('[name="user-email"]').value;
+      const role = form.querySelector('[name="user-role"]').value;
+      const users = JSON.parse(localStorage.getItem('users')) || [];
+      const message = document.getElementById('user-message');
+
+      if (!users.some(user => user.email === email)) {
+        users.push({ name, email, role, timestamp: new Date().toLocaleString() });
+        localStorage.setItem('users', JSON.stringify(users));
+        message.textContent = 'User added successfully!';
+        message.style.color = document.body.classList.contains('dark-mode') ? '#ffeb3b' : '#003087';
+        form.reset();
+        loadData();
+      } else {
+        message.textContent = 'User already exists!';
+        message.style.color = '#ff0000';
+      }
+    };
+
+    // Remove User
+    window.removeUser = function (email) {
+      let users = JSON.parse(localStorage.getItem('users')) || [];
+      users = users.filter(user => user.email !== email);
+      localStorage.setItem('users', JSON.stringify(users));
+      loadData();
+    };
+
+    // Update Analytics
+    window.updateAnalytics = function () {
+      const contactSubmissions = JSON.parse(localStorage.getItem('contactSubmissions')) || [];
+      const appointmentSubmissions = JSON.parse(localStorage.getItem('appointmentSubmissions')) || [];
+      const newsletterSubmissions = JSON.parse(localStorage.getItem('newsletterSubmissions')) || [];
+      const admissionsSubmissions = JSON.parse(localStorage.getItem('admissionsSubmissions')) || [];
+      const clicks = JSON.parse(localStorage.getItem('clicks')) || [];
+      const ctx = document.getElementById('analytics-chart').getContext('2d');
+      const chart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: ['Contact', 'Appointment', 'Newsletter', 'Admissions', 'Unique Clicks'],
+          datasets: [{
+            label: 'Activity Count',
+            data: [
+              contactSubmissions.length,
+              appointmentSubmissions.length,
+              newsletterSubmissions.length,
+              admissionsSubmissions.length,
+              new Set(clicks.map(click => click.timestamp.split(' ')[0])).size
+            ],
+            backgroundColor: ['#003087', '#ffd700', '#0056b3', '#ffeb3b', '#007bff'],
+            borderColor: ['#003087', '#ffd700', '#0056b3', '#ffeb3b', '#007bff'],
+            borderWidth: 1
+          }]
+        },
+        options: {
+          scales: {
+            y: { beginAtZero: true }
+          }
+        }
+      });
+    };
+
+    // Send Notification
+    window.sendNotification = function (event) {
+      event.preventDefault();
+      const form = document.getElementById('notification-form');
+      const title = form.querySelector('[name="notification-title"]').value;
+      const message = form.querySelector('[name="notification-message"]').value;
+      const notificationMessage = document.getElementById('notification-message');
+
+      if (title && message) {
+        alert(`Notification Sent!\nTitle: ${title}\nMessage: ${message}`);
+        notificationMessage.textContent = 'Notification sent successfully!';
+        notificationMessage.style.color = document.body.classList.contains('dark-mode') ? '#ffeb3b' : '#003087';
+        form.reset();
+      } else {
+        notificationMessage.textContent = 'Please fill all fields!';
+        notificationMessage.style.color = '#ff0000';
+      }
+    };
+
+    // Clear Data
+    window.clearData = function () {
+      if (confirm('Are you sure you want to clear all data? This action cannot be undone.')) {
+        localStorage.removeItem('contactSubmissions');
+        localStorage.removeItem('appointmentSubmissions');
+        localStorage.removeItem('newsletterSubmissions');
+        localStorage.removeItem('admissionsSubmissions');
+        localStorage.removeItem('clicks');
+        localStorage.removeItem('users');
+        loadData();
+        updateAnalytics();
+        alert('Data cleared successfully!');
+      }
+    };
+
+    // Logout
+    window.logout = function () {
+      const dashboard = document.getElementById('admin-dashboard');
+      dashboard.style.display = 'none';
+      openAdminLogin();
+    };
+
+    // Open Admin Login Modal on Page Load
+    document.addEventListener('DOMContentLoaded', openAdminLogin);
+  </script>
+</body>
+</html>
